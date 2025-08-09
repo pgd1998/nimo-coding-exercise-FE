@@ -5,20 +5,22 @@ export const formatPercentage = (percentage) => {
         if (typeof percentage !== 'number' || isNaN(percentage)) return 'N/A';
         const isPositive = percentage >= 0;
         return (
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25, minWidth: 0 }}>
                 {isPositive ? (
-                    <TrendingUpIcon sx={{ color: 'success.main', fontSize: 16 }} />
+                    <TrendingUpIcon sx={{ color: 'success.main', fontSize: 14, flexShrink: 0 }} />
                 ) : (
-                    <TrendingDownIcon sx={{ color: 'error.main', fontSize: 16 }} />
+                    <TrendingDownIcon sx={{ color: 'error.main', fontSize: 14, flexShrink: 0 }} />
                 )}
                 <Typography 
-                    variant="body2" 
+                    variant="caption" 
                     sx={{ 
                         color: isPositive ? 'success.main' : 'error.main',
-                        fontWeight: 'medium'
+                        fontWeight: 'medium',
+                        fontSize: '0.75rem',
+                        whiteSpace: 'nowrap'
                     }}
                 >
-                    {isPositive ? '+' : ''}{percentage.toFixed(2)}%
+                    {isPositive ? '+' : ''}{Math.abs(percentage).toFixed(1)}%
                 </Typography>
             </Box>
         );
@@ -26,11 +28,23 @@ export const formatPercentage = (percentage) => {
 
 export const formatCurrency = (value, currency = 'AUD') => {
         if (typeof value !== 'number' || isNaN(value)) return 'N/A';
+        
+        // For very small values, show more decimal places
+        if (value < 1) {
+            return new Intl.NumberFormat('en-AU', {
+                style: 'currency',
+                currency: currency,
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 6
+            }).format(value);
+        }
+        
+        // For larger values, show fewer decimal places
         return new Intl.NumberFormat('en-AU', {
             style: 'currency',
             currency: currency,
             minimumFractionDigits: 2,
-            maximumFractionDigits: 6
+            maximumFractionDigits: 2
         }).format(value);
     };
 
