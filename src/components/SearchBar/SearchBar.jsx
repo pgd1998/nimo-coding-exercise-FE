@@ -1,12 +1,27 @@
 
 
-const SearchBar = ( {setSearchTerm} )=>{
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 
-    return (
-        <div>
-            <input type="text" placeholder="Search" onChange={(e)=>setSearchTerm(e.target.value)}/>
-        </div>
-    )
+const MySearchBar = ({setSearchTerm}) => {
+  return (
+    <TextField
+      label="Search"
+      variant="outlined"
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <IconButton>
+              <SearchIcon />
+            </IconButton>
+          </InputAdornment>
+        ),
+      }}
+      onChange={(e)=>setSearchTerm(e.target.value)}
+    />
+  );
 }
 
-export default SearchBar;
+export default MySearchBar;

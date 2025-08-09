@@ -1,11 +1,11 @@
 
-
+import TableCell from '@mui/material/TableCell';
 const CryptoCard = ({children})=>{
 
     return (
-        <div>
+        <TableCell align="right">
             {children}
-        </div>
+        </TableCell>
     )
 }
 
