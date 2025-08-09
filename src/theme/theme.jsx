@@ -104,10 +104,11 @@ const getTheme = (mode = 'light') => createTheme({
     },
     MuiPaper: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           borderRadius: 12,
-          border: '1px solid rgba(0,0,0,0.08)',
-        },
+          border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.12)'}`,
+          backgroundColor: theme.palette.background.paper,
+        }),
       },
     },
     MuiTableContainer: {
@@ -161,6 +162,80 @@ const getTheme = (mode = 'light') => createTheme({
           border: '2px solid rgba(255,255,255,0.8)',
           boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
         },
+      },
+    },
+    MuiPagination: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '& .MuiPaginationItem-root': {
+            color: theme.palette.text.primary,
+            backgroundColor: theme.palette.background.paper,
+            border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.12)'}`,
+            '&:hover': {
+              backgroundColor: theme.palette.action.hover,
+            },
+            '&.Mui-selected': {
+              backgroundColor: theme.palette.primary.main,
+              color: theme.palette.primary.contrastText,
+              '&:hover': {
+                backgroundColor: theme.palette.primary.dark,
+              },
+            },
+          },
+        }),
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          backgroundColor: theme.palette.background.paper,
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.mode === 'light' ? 'rgba(0,0,0,0.23)' : 'rgba(255,255,255,0.23)',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.mode === 'light' ? 'rgba(0,0,0,0.87)' : 'rgba(255,255,255,0.87)',
+          },
+        }),
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          backgroundColor: theme.palette.background.paper,
+          color: theme.palette.text.primary,
+          '&:hover': {
+            backgroundColor: theme.palette.action.hover,
+          },
+          '&.Mui-selected': {
+            backgroundColor: theme.palette.action.selected,
+            '&:hover': {
+              backgroundColor: theme.palette.action.hover,
+            },
+          },
+        }),
+      },
+    },
+    MuiFormControl: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '& .MuiInputLabel-root': {
+            color: theme.palette.text.secondary,
+            '&.Mui-focused': {
+              color: theme.palette.primary.main,
+            },
+          },
+        }),
+      },
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: ({ theme }) => ({
+          backgroundColor: theme.palette.background.paper,
+          border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.12)'}`,
+          boxShadow: theme.palette.mode === 'light' 
+            ? '0 4px 8px rgba(0,0,0,0.1)' 
+            : '0 4px 8px rgba(0,0,0,0.3)',
+        }),
       },
     },
   },

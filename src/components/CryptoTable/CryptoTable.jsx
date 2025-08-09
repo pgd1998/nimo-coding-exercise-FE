@@ -231,7 +231,7 @@ const CryptoTable = ({ searchTerm }) => {
                 width: '100%',
                 tableLayout: 'fixed'
             }} aria-label="cryptocurrency table">
-                <TableHead sx={{ bgcolor: 'grey.50' }}>
+                <TableHead sx={{ bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800' }}>
                     <TableRow>
                         <TableCell sx={{ 
                             fontWeight: 'bold', 
@@ -502,7 +502,7 @@ const CryptoTable = ({ searchTerm }) => {
                     gap: 3,
                     mt: 4,
                     p: 2,
-                    bgcolor: 'grey.50',
+                    bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.900',
                     borderRadius: 2,
                     border: '1px solid',
                     borderColor: 'divider'
