@@ -14,16 +14,23 @@ import {
     TableSortLabel,
     Box,
     Alert,
-    Button
+    Button,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    Typography
 } from "@mui/material";
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 
 const CryptoTable = ({ searchTerm }) => {
     const navigate = useNavigate();
     const { isLoading, isError, fetchCryptoData, searchCrypto, cryptoData, setCryptoData } = useCryptoData();
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(20);
+    const [itemsPerPage, setItemsPerPage] = useState(25);
     const [sortOrder] = useState('market_cap_desc');
-    const [totalPages] = useState(250); // CoinGecko has ~10000 coins, so 250 pages max for 20 per page
+    const [totalPages] = useState(250); // CoinGecko has ~10000+ coins
     const [isSearching, setIsSearching] = useState(false);
     const [sortField, setSortField] = useState('market_cap');
     const [sortDirection, setSortDirection] = useState('desc');
@@ -104,6 +111,53 @@ const CryptoTable = ({ searchTerm }) => {
         navigate(`/crypto/${coinId}`);
     };
 
+    const handleItemsPerPageChange = (event) => {
+        setItemsPerPage(event.target.value);
+        setCurrentPage(1); // Reset to first page when changing items per page
+    };
+
+    const formatPercentage = (percentage) => {
+        if (typeof percentage !== 'number' || isNaN(percentage)) return 'N/A';
+        const isPositive = percentage >= 0;
+        return (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                {isPositive ? (
+                    <TrendingUpIcon sx={{ color: 'success.main', fontSize: 16 }} />
+                ) : (
+                    <TrendingDownIcon sx={{ color: 'error.main', fontSize: 16 }} />
+                )}
+                <Typography 
+                    variant="body2" 
+                    sx={{ 
+                        color: isPositive ? 'success.main' : 'error.main',
+                        fontWeight: 'medium'
+                    }}
+                >
+                    {isPositive ? '+' : ''}{percentage.toFixed(2)}%
+                </Typography>
+            </Box>
+        );
+    };
+
+    const formatCurrency = (value, currency = 'AUD') => {
+        if (typeof value !== 'number' || isNaN(value)) return 'N/A';
+        return new Intl.NumberFormat('en-AU', {
+            style: 'currency',
+            currency: currency,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 6
+        }).format(value);
+    };
+
+    const formatLargeNumber = (value) => {
+        if (typeof value !== 'number' || isNaN(value)) return 'N/A';
+        if (value >= 1e12) return `$${(value / 1e12).toFixed(2)}T`;
+        if (value >= 1e9) return `$${(value / 1e9).toFixed(2)}B`;
+        if (value >= 1e6) return `$${(value / 1e6).toFixed(2)}M`;
+        if (value >= 1e3) return `$${(value / 1e3).toFixed(2)}K`;
+        return `$${value.toFixed(2)}`;
+    };
+
     if (isLoading) {
         return <LoadingSkeleton />;
     }
@@ -116,11 +170,12 @@ const CryptoTable = ({ searchTerm }) => {
                 </Alert>
             )}
 
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="cryptocurrency table">
+            <TableContainer component={Paper} sx={{ overflowX: 'auto' }}>
+                <Table sx={{ minWidth: { xs: 800, md: 1200 } }} aria-label="cryptocurrency table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>
+                            <TableCell sx={{ fontWeight: 'bold' }}>#</TableCell>
+                            <TableCell sx={{ fontWeight: 'bold' }}>
                                 <TableSortLabel
                                     active={getSortDirection('name') !== false}
                                     direction={getSortDirection('name') || 'desc'}
@@ -129,16 +184,52 @@ const CryptoTable = ({ searchTerm }) => {
                                     Name
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell align="right">
+                            <TableCell align="right" sx={{ fontWeight: 'bold' }}>
                                 <TableSortLabel
                                     active={getSortDirection('current_price') !== false}
                                     direction={getSortDirection('current_price') || 'desc'}
                                     onClick={() => handleSort('current_price')}
                                 >
-                                    Price (AUD)
+                                    Price
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell align="right">
+                            <TableCell align="right" sx={{ fontWeight: 'bold', display: { xs: 'none', md: 'table-cell' } }}>
+                                <TableSortLabel
+                                    active={getSortDirection('price_change_percentage_1h_in_currency') !== false}
+                                    direction={getSortDirection('price_change_percentage_1h_in_currency') || 'desc'}
+                                    onClick={() => handleSort('price_change_percentage_1h_in_currency')}
+                                >
+                                    1h %
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell align="right" sx={{ fontWeight: 'bold' }}>
+                                <TableSortLabel
+                                    active={getSortDirection('price_change_percentage_24h') !== false}
+                                    direction={getSortDirection('price_change_percentage_24h') || 'desc'}
+                                    onClick={() => handleSort('price_change_percentage_24h')}
+                                >
+                                    24h %
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell align="right" sx={{ fontWeight: 'bold', display: { xs: 'none', lg: 'table-cell' } }}>
+                                <TableSortLabel
+                                    active={getSortDirection('price_change_percentage_7d_in_currency') !== false}
+                                    direction={getSortDirection('price_change_percentage_7d_in_currency') || 'desc'}
+                                    onClick={() => handleSort('price_change_percentage_7d_in_currency')}
+                                >
+                                    7d %
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell align="right" sx={{ fontWeight: 'bold', display: { xs: 'none', md: 'table-cell' } }}>
+                                <TableSortLabel
+                                    active={getSortDirection('total_volume') !== false}
+                                    direction={getSortDirection('total_volume') || 'desc'}
+                                    onClick={() => handleSort('total_volume')}
+                                >
+                                    Volume (24h)
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell align="right" sx={{ fontWeight: 'bold' }}>
                                 <TableSortLabel
                                     active={getSortDirection('market_cap') !== false}
                                     direction={getSortDirection('market_cap') || 'desc'}
@@ -151,7 +242,7 @@ const CryptoTable = ({ searchTerm }) => {
                     </TableHead>
                     <TableBody>
                         {cryptoData.length > 0 ? (
-                            cryptoData.map((crypto) => (
+                            cryptoData.map((crypto, index) => (
                                 <TableRow
                                     key={crypto.id}
                                     sx={{ 
@@ -160,6 +251,11 @@ const CryptoTable = ({ searchTerm }) => {
                                     }}
                                     onClick={() => handleCryptoClick(crypto.id)}
                                 >
+                                    <TableCell>
+                                        <Typography variant="body2" color="text.secondary">
+                                            {crypto.market_cap_rank || ((currentPage - 1) * itemsPerPage + index + 1)}
+                                        </Typography>
+                                    </TableCell>
                                     <TableCell component="th" scope="row">
                                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                             <img 
@@ -169,35 +265,61 @@ const CryptoTable = ({ searchTerm }) => {
                                                 height="24"
                                                 style={{ borderRadius: '50%' }}
                                             />
-                                            <Button
-                                                variant="text"
-                                                color="primary"
-                                                sx={{ 
-                                                    justifyContent: 'flex-start',
-                                                    textTransform: 'none',
-                                                    fontWeight: 'normal',
-                                                    '&:hover': { backgroundColor: 'transparent' }
-                                                }}
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    handleCryptoClick(crypto.id);
-                                                }}
-                                            >
-                                                {crypto.name} ({crypto.symbol.toUpperCase()})
-                                            </Button>
+                                            <Box>
+                                                <Button
+                                                    variant="text"
+                                                    color="primary"
+                                                    sx={{ 
+                                                        justifyContent: 'flex-start',
+                                                        textTransform: 'none',
+                                                        fontWeight: 'medium',
+                                                        fontSize: '0.875rem',
+                                                        minWidth: 0,
+                                                        p: 0,
+                                                        '&:hover': { backgroundColor: 'transparent' }
+                                                    }}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleCryptoClick(crypto.id);
+                                                    }}
+                                                >
+                                                    {crypto.name}
+                                                </Button>
+                                                <Typography variant="caption" color="text.secondary" display="block">
+                                                    {crypto.symbol.toUpperCase()}
+                                                </Typography>
+                                            </Box>
                                         </Box>
                                     </TableCell>
                                     <TableCell align="right">
-                                        ${crypto.current_price?.toLocaleString() || 'N/A'}
+                                        <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
+                                            {formatCurrency(crypto.current_price)}
+                                        </Typography>
+                                    </TableCell>
+                                    <TableCell align="right" sx={{ display: { xs: 'none', md: 'table-cell' } }}>
+                                        {formatPercentage(crypto.price_change_percentage_1h_in_currency)}
                                     </TableCell>
                                     <TableCell align="right">
-                                        ${crypto.market_cap?.toLocaleString() || 'N/A'}
+                                        {formatPercentage(crypto.price_change_percentage_24h)}
+                                    </TableCell>
+                                    <TableCell align="right" sx={{ display: { xs: 'none', lg: 'table-cell' } }}>
+                                        {formatPercentage(crypto.price_change_percentage_7d_in_currency)}
+                                    </TableCell>
+                                    <TableCell align="right" sx={{ display: { xs: 'none', md: 'table-cell' } }}>
+                                        <Typography variant="body2">
+                                            {formatLargeNumber(crypto.total_volume)}
+                                        </Typography>
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
+                                            {formatLargeNumber(crypto.market_cap)}
+                                        </Typography>
                                     </TableCell>
                                 </TableRow>
                             ))
                         ) : (
                             <TableRow>
-                                <TableCell colSpan={3} align="center">
+                                <TableCell colSpan={8} align="center">
                                     {isSearching ? 'No search results found' : 'No cryptocurrency data available'}
                                 </TableCell>
                             </TableRow>
@@ -207,7 +329,28 @@ const CryptoTable = ({ searchTerm }) => {
             </TableContainer>
 
             {!isSearching && cryptoData.length > 0 && (
-                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
+                <Box sx={{ 
+                    display: 'flex', 
+                    flexDirection: { xs: 'column', sm: 'row' },
+                    justifyContent: 'space-between', 
+                    alignItems: 'center', 
+                    gap: 2,
+                    mt: 3 
+                }}>
+                    <FormControl size="small" sx={{ minWidth: 120 }}>
+                        <InputLabel>Per page</InputLabel>
+                        <Select
+                            value={itemsPerPage}
+                            label="Per page"
+                            onChange={handleItemsPerPageChange}
+                        >
+                            <MenuItem value={25}>25</MenuItem>
+                            <MenuItem value={50}>50</MenuItem>
+                            <MenuItem value={75}>75</MenuItem>
+                            <MenuItem value={100}>100</MenuItem>
+                        </Select>
+                    </FormControl>
+                    
                     <Pagination 
                         count={Math.min(totalPages, 250)} 
                         page={currentPage}
@@ -216,7 +359,14 @@ const CryptoTable = ({ searchTerm }) => {
                         size="large"
                         showFirstButton
                         showLastButton
+                        sx={{
+                            '& .MuiPagination-ul': {
+                                flexWrap: 'wrap'
+                            }
+                        }}
                     />
+                    
+                    <Box sx={{ minWidth: { xs: 0, sm: 120 } }} /> {/* Spacer to center pagination on desktop */}
                 </Box>
             )}
         </Box>

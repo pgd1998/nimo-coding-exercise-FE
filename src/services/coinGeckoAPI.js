@@ -13,9 +13,10 @@ const coinGeckoApi = async (params = {}) => {
     const {
         vs_currency = 'aud',
         order = 'market_cap_desc',
-        per_page = 20,
+        per_page = 25,
         page = 1,
         sparkline = false,
+        price_change_percentage = '1h,24h,7d',
         ids = null,
         names = null
     } = params;
@@ -25,7 +26,8 @@ const coinGeckoApi = async (params = {}) => {
         order,
         per_page: per_page.toString(),
         page: page.toString(),
-        sparkline: sparkline.toString()
+        sparkline: sparkline.toString(),
+        price_change_percentage
     });
 
     if (ids) {
