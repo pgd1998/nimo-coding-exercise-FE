@@ -35,6 +35,7 @@ import ShowChartIcon from '@mui/icons-material/ShowChart';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 const CryptoDetails = ({ coinDetail, onBackClick }) => {
     const theme = useTheme();
@@ -164,6 +165,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                     <BookmarkBorderIcon />
                                 </IconButton>
                             </Tooltip>
+                            <ThemeToggle size={isMobile ? "medium" : "large"} />
                         </Stack>
                     </Box>
                 </Grow>

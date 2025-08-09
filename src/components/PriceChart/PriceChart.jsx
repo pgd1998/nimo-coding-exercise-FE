@@ -159,7 +159,7 @@ const PriceChart = ({ coinId, coinName, currentPrice }) => {
                                             <stop offset="95%" stopColor={getGradientColor()} stopOpacity={0.05}/>
                                         </linearGradient>
                                     </defs>
-                                    <CartesianGrid strokeDasharray="3 3" stroke={theme.palette.divider} />
+                                    <CartesianGrid strokeDasharray="3 3" stroke={theme.palette.divider} opacity={0.3} />
                                     <XAxis 
                                         dataKey="timestamp"
                                         tickFormatter={(timestamp) => {
@@ -168,11 +168,15 @@ const PriceChart = ({ coinId, coinName, currentPrice }) => {
                                                 ? date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                                                 : date.toLocaleDateString([], { month: 'short', day: 'numeric' });
                                         }}
-                                        tick={{ fontSize: isMobile ? 10 : 12 }}
+                                        tick={{ fontSize: isMobile ? 10 : 12, fill: theme.palette.text.secondary }}
+                                        axisLine={{ stroke: theme.palette.divider }}
+                                        tickLine={{ stroke: theme.palette.divider }}
                                     />
                                     <YAxis 
                                         tickFormatter={(value) => `$${value.toFixed(2)}`}
-                                        tick={{ fontSize: isMobile ? 10 : 12 }}
+                                        tick={{ fontSize: isMobile ? 10 : 12, fill: theme.palette.text.secondary }}
+                                        axisLine={{ stroke: theme.palette.divider }}
+                                        tickLine={{ stroke: theme.palette.divider }}
                                         width={80}
                                     />
                                     <Tooltip content={<CustomTooltip />} />

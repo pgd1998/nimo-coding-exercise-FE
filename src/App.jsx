@@ -1,22 +1,19 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router'
-import { ThemeProvider } from '@mui/material/styles'
-import { CssBaseline } from '@mui/material'
-import theme from './theme/theme'
+import { ThemeContextProvider } from './theme/ThemeContext'
 import Home from './pages/HomePage'
 import CryptoDetailPage from './pages/CryptoDetailPage'
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <ThemeContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/crypto/:coinId" element={<CryptoDetailPage />} />
         </Routes>
       </BrowserRouter>
-    </ThemeProvider>
+    </ThemeContextProvider>
   )
 }
 

@@ -1,7 +1,8 @@
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({
+const getTheme = (mode = 'light') => createTheme({
   palette: {
+    mode,
     primary: {
       main: '#1976d2',
       light: '#42a5f5',
@@ -35,67 +36,25 @@ const theme = createTheme({
       dark: '#01579b',
     },
     background: {
-      default: '#fafafa',
-      paper: '#ffffff',
+      default: mode === 'light' ? '#fafafa' : '#121212',
+      paper: mode === 'light' ? '#ffffff' : '#1e1e1e',
     },
-    grey: {
-      25: '#fafafa',
-      50: '#f5f5f5',
-      100: '#eeeeee',
-      200: '#e0e0e0',
-      300: '#bdbdbd',
-      400: '#9e9e9e',
-      500: '#757575',
-      600: '#616161',
-      700: '#424242',
-      800: '#303030',
-      900: '#212121',
+    text: {
+      primary: mode === 'light' ? '#212121' : '#ffffff',
+      secondary: mode === 'light' ? '#757575' : '#b3b3b3',
     },
-  },
+  }, // ✅ Added comma to close palette
   typography: {
     fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontSize: '2.5rem',
-      fontWeight: 700,
-      lineHeight: 1.2,
-    },
-    h2: {
-      fontSize: '2rem',
-      fontWeight: 700,
-      lineHeight: 1.3,
-    },
-    h3: {
-      fontSize: '1.75rem',
-      fontWeight: 600,
-      lineHeight: 1.3,
-    },
-    h4: {
-      fontSize: '1.5rem',
-      fontWeight: 600,
-      lineHeight: 1.4,
-    },
-    h5: {
-      fontSize: '1.25rem',
-      fontWeight: 600,
-      lineHeight: 1.4,
-    },
-    h6: {
-      fontSize: '1rem',
-      fontWeight: 600,
-      lineHeight: 1.5,
-    },
-    body1: {
-      fontSize: '1rem',
-      lineHeight: 1.6,
-    },
-    body2: {
-      fontSize: '0.875rem',
-      lineHeight: 1.5,
-    },
-    caption: {
-      fontSize: '0.75rem',
-      lineHeight: 1.4,
-    },
+    h1: { fontSize: '2.5rem', fontWeight: 700, lineHeight: 1.2 },
+    h2: { fontSize: '2rem', fontWeight: 700, lineHeight: 1.3 },
+    h3: { fontSize: '1.75rem', fontWeight: 600, lineHeight: 1.3 },
+    h4: { fontSize: '1.5rem', fontWeight: 600, lineHeight: 1.4 },
+    h5: { fontSize: '1.25rem', fontWeight: 600, lineHeight: 1.4 },
+    h6: { fontSize: '1rem', fontWeight: 600, lineHeight: 1.5 },
+    body1: { fontSize: '1rem', lineHeight: 1.6 },
+    body2: { fontSize: '0.875rem', lineHeight: 1.5 },
+    caption: { fontSize: '0.75rem', lineHeight: 1.4 },
   },
   shape: {
     borderRadius: 8,
@@ -103,16 +62,20 @@ const theme = createTheme({
   components: {
     MuiCard: {
       styleOverrides: {
-        root: {
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        root: ({ theme }) => ({
+          boxShadow: theme.palette.mode === 'light' 
+            ? '0 2px 8px rgba(0,0,0,0.1)' 
+            : '0 2px 8px rgba(0,0,0,0.3)',
           borderRadius: 12,
-          border: '1px solid rgba(0,0,0,0.08)',
+          border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.12)'}`,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+            boxShadow: theme.palette.mode === 'light' 
+              ? '0 4px 16px rgba(0,0,0,0.15)' 
+              : '0 4px 16px rgba(0,0,0,0.4)',
             transform: 'translateY(-2px)',
           },
-        },
+        }),
       },
     },
     MuiButton: {
@@ -136,10 +99,7 @@ const theme = createTheme({
     },
     MuiChip: {
       styleOverrides: {
-        root: {
-          borderRadius: 8,
-          fontWeight: 500,
-        },
+        root: { borderRadius: 8, fontWeight: 500 },
       },
     },
     MuiPaper: {
@@ -151,41 +111,37 @@ const theme = createTheme({
       },
     },
     MuiTableContainer: {
-      styleOverrides: {
-        root: {
-          borderRadius: 12,
-        },
-      },
+      styleOverrides: { root: { borderRadius: 12 } },
     },
     MuiTableHead: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           '& .MuiTableCell-root': {
             fontWeight: 600,
-            backgroundColor: '#f8fafc',
-            borderBottom: '2px solid #e2e8f0',
+            backgroundColor: theme.palette.mode === 'light' ? '#f8fafc' : '#2a2a2a',
+            borderBottom: `2px solid ${theme.palette.mode === 'light' ? '#e2e8f0' : '#404040'}`,
           },
-        },
+        }),
       },
     },
     MuiTableRow: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           '&:nth-of-type(even)': {
-            backgroundColor: '#fafbfc',
+            backgroundColor: theme.palette.mode === 'light' ? '#fafbfc' : '#1a1a1a',
           },
           '&:hover': {
-            backgroundColor: '#f1f5f9 !important',
+            backgroundColor: `${theme.palette.mode === 'light' ? '#f1f5f9' : '#333333'} !important`,
           },
-        },
+        }),
       },
     },
     MuiTableCell: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           padding: '12px 16px',
-          borderBottom: '1px solid #e2e8f0',
-        },
+          borderBottom: `1px solid ${theme.palette.mode === 'light' ? '#e2e8f0' : '#404040'}`,
+        }),
       },
     },
     MuiTabs: {
@@ -209,14 +165,8 @@ const theme = createTheme({
     },
   },
   breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 960,
-      lg: 1280,
-      xl: 1920,
-    },
+    values: { xs: 0, sm: 600, md: 960, lg: 1280, xl: 1920 },
   },
 });
 
-export default theme;
+export default getTheme;
