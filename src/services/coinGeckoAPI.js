@@ -1,11 +1,10 @@
 const BASE_URL = import.meta.env.DEV ? '/api' : 'https://api.coingecko.com/api/v3';
-const API_KEY = 'CG-zCFAZq6SwEys9uRyMVSCJjDj';
 
 const defaultOptions = {
     method: "GET",
     headers: {
         accept: 'application/json', 
-        'x-cg-demo-api-key': API_KEY
+        'x-cg-demo-api-key': import.meta.env.VITE_API_KEY
     }
 };
 
