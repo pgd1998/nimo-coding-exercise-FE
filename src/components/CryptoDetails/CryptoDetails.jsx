@@ -19,7 +19,14 @@ import {
     useMediaQuery,
     Fade,
     Grow,
-    Zoom
+    Zoom,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow
 } from "@mui/material";
 import PriceChart from '../PriceChart/PriceChart';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -32,9 +39,11 @@ import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import ShareIcon from '@mui/icons-material/Share';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
-import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import SecurityIcon from '@mui/icons-material/Security';
+import GroupIcon from '@mui/icons-material/Group';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 const CryptoDetails = ({ coinDetail, onBackClick }) => {
@@ -64,7 +73,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                 )}
                 <Typography 
                     variant="body2" 
-                    sx={{ color: isPositive ? 'success.main' : 'error.main' }}
+                    sx={{ color: isPositive ? 'success.main' : 'error.main', fontWeight: 600 }}
                 >
                     {Math.abs(percentage).toFixed(2)}%
                 </Typography>
@@ -89,6 +98,8 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
     const marketData = coinDetail.market_data || {};
     const links = coinDetail.links || {};
+    const developerData = coinDetail.developer_data || {};
+    const communityData = coinDetail.community_data || {};
 
     return (
         <Fade in timeout={800}>
@@ -170,7 +181,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                     </Box>
                 </Grow>
 
-                {/* Modern Header Section */}
+                {/* Main Header Section */}
                 <Zoom in timeout={1000}>
                     <Card 
                         elevation={0} 
@@ -179,252 +190,174 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                             border: '1px solid', 
                             borderColor: 'divider',
                             borderRadius: 3,
-                            overflow: 'hidden',
-                            boxShadow: 3
+                            overflow: 'hidden'
                         }}
                     >
                         <CardContent sx={{ 
-                            p: { xs: 2, sm: 3, md: 4 },
-                            background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.03) 0%, rgba(255, 255, 255, 1) 100%)'
+                            p: { xs: 2, sm: 3, md: 4 }
                         }}>
-                            {/* Main Header Section */}
-                            <Box sx={{ 
-                                display: 'flex', 
-                                flexDirection: { xs: 'column', sm: 'row' },
-                                alignItems: { xs: 'center', sm: 'flex-start' }, 
-                                gap: { xs: 2, sm: 3 }, 
-                                mb: { xs: 3, sm: 4 },
-                                textAlign: { xs: 'center', sm: 'left' }
-                            }}>
-                                <Avatar 
-                                    src={coinDetail.image?.large || coinDetail.image?.small} 
-                                    alt={coinDetail.name}
-                                    sx={{ 
-                                        width: { xs: 60, sm: 70, md: 80 }, 
-                                        height: { xs: 60, sm: 70, md: 80 },
-                                        boxShadow: 3
-                                    }}
-                                />
-                                <Box sx={{ flex: 1 }}>
+                            <Grid container spacing={4}>
+                                {/* Left Side - Coin Information */}
+                                <Grid item xs={12} lg={7}>
+                                    {/* Coin Header */}
                                     <Box sx={{ 
                                         display: 'flex', 
-                                        flexDirection: { xs: 'column', sm: 'row' },
-                                        alignItems: { xs: 'center', sm: 'center' }, 
-                                        gap: { xs: 1, sm: 2 }, 
-                                        mb: 1,
-                                        justifyContent: { xs: 'center', sm: 'flex-start' }
+                                        alignItems: 'center', 
+                                        gap: 3, 
+                                        mb: 3
                                     }}>
-                                        <Typography 
-                                            variant={isMobile ? "h4" : "h3"} 
-                                            component="h1" 
+                                        <Avatar 
+                                            src={coinDetail.image?.large || coinDetail.image?.small} 
+                                            alt={coinDetail.name}
                                             sx={{ 
-                                                fontWeight: 700,
-                                                background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
-                                                backgroundClip: 'text',
-                                                textFillColor: 'transparent',
-                                                WebkitBackgroundClip: 'text',
-                                                WebkitTextFillColor: 'transparent'
+                                                width: { xs: 60, sm: 70, md: 80 }, 
+                                                height: { xs: 60, sm: 70, md: 80 }
                                             }}
-                                        >
-                                            {coinDetail.name}
-                                        </Typography>
-                                        <Stack 
-                                            direction={{ xs: 'column', sm: 'row' }} 
-                                            spacing={1} 
-                                            alignItems="center"
-                                        >
-                                            <Chip 
-                                                label={coinDetail.symbol?.toUpperCase()} 
-                                                size={isMobile ? "small" : "medium"}
-                                                sx={{ 
-                                                    bgcolor: 'primary.main', 
-                                                    color: 'white',
-                                                    fontWeight: 600,
-                                                    fontSize: { xs: '0.75rem', sm: '0.875rem' }
-                                                }}
-                                            />
-                                            <Chip 
-                                                label={`Rank #${coinDetail.market_cap_rank || 'N/A'}`}
-                                                size={isMobile ? "small" : "medium"}
-                                                variant="outlined"
-                                                color="primary"
-                                                sx={{ 
-                                                    fontWeight: 600,
-                                                    fontSize: { xs: '0.75rem', sm: '0.875rem' }
-                                                }}
-                                            />
-                                        </Stack>
-                                    </Box>
-
-                                    {/* Price Section */}
-                                    <Box sx={{ mb: { xs: 2, sm: 3 } }}>
-                                        <Typography 
-                                            variant={isMobile ? "h3" : "h2"} 
-                                            sx={{ 
-                                                fontWeight: 700, 
-                                                color: 'primary.main',
-                                                mb: { xs: 1, sm: 2 },
-                                                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }
-                                            }}
-                                        >
-                                            {formatPrice(marketData.current_price?.aud)}
-                                        </Typography>
-                                        <Stack 
-                                            direction={{ xs: 'column', sm: 'row' }} 
-                                            spacing={{ xs: 1, sm: 3 }} 
-                                            alignItems={{ xs: 'center', sm: 'center' }}
-                                            sx={{ 
-                                                gap: { xs: 1, sm: 2 },
-                                                justifyContent: { xs: 'center', sm: 'flex-start' }
-                                            }}
-                                        >
+                                        />
+                                        <Box sx={{ flex: 1 }}>
                                             <Box sx={{ 
                                                 display: 'flex', 
                                                 alignItems: 'center', 
-                                                gap: 1,
-                                                p: { xs: 1, sm: 1.5 },
-                                                bgcolor: 'action.hover',
-                                                borderRadius: 2
+                                                gap: 2, 
+                                                mb: 1,
+                                                flexWrap: 'wrap'
                                             }}>
-                                                {formatPercentage(marketData.price_change_percentage_24h)}
-                                                <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
-                                                    24h
+                                                <Typography 
+                                                    variant={isMobile ? "h4" : "h3"} 
+                                                    component="h1" 
+                                                    sx={{ fontWeight: 700 }}
+                                                >
+                                                    {coinDetail.name}
+                                                </Typography>
+                                                <Chip 
+                                                    label={coinDetail.symbol?.toUpperCase()} 
+                                                    size="medium"
+                                                    variant="outlined"
+                                                    sx={{ fontWeight: 600 }}
+                                                />
+                                                <Chip 
+                                                    label={`Rank #${coinDetail.market_cap_rank || 'N/A'}`}
+                                                    size="medium"
+                                                    color="primary"
+                                                    sx={{ fontWeight: 600 }}
+                                                />
+                                            </Box>
+                                            
+                                            {/* Price Section */}
+                                            <Typography 
+                                                variant={isMobile ? "h3" : "h2"} 
+                                                sx={{ 
+                                                    fontWeight: 700, 
+                                                    color: 'text.primary',
+                                                    mb: 2
+                                                }}
+                                            >
+                                                {formatPrice(marketData.current_price?.aud)}
+                                            </Typography>
+                                            
+                                            {/* Price Changes */}
+                                            <Stack 
+                                                direction="row" 
+                                                spacing={3} 
+                                                sx={{ flexWrap: 'wrap', gap: 1 }}
+                                            >
+                                                <Box sx={{ 
+                                                    display: 'flex', 
+                                                    alignItems: 'center', 
+                                                    gap: 1,
+                                                    p: 1,
+                                                    bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800',
+                                                    borderRadius: 1,
+                                                    border: '1px solid',
+                                                    borderColor: theme.palette.mode === 'light' ? 'grey.200' : 'grey.600'
+                                                }}>
+                                                    {formatPercentage(marketData.price_change_percentage_24h)}
+                                                    <Typography variant="caption" color="text.secondary">24h</Typography>
+                                                </Box>
+                                                <Box sx={{ 
+                                                    display: 'flex', 
+                                                    alignItems: 'center', 
+                                                    gap: 1,
+                                                    p: 1,
+                                                    bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800',
+                                                    borderRadius: 1,
+                                                    border: '1px solid',
+                                                    borderColor: theme.palette.mode === 'light' ? 'grey.200' : 'grey.600'
+                                                }}>
+                                                    {formatPercentage(marketData.price_change_percentage_7d)}
+                                                    <Typography variant="caption" color="text.secondary">7d</Typography>
+                                                </Box>
+                                                <Box sx={{ 
+                                                    display: 'flex', 
+                                                    alignItems: 'center', 
+                                                    gap: 1,
+                                                    p: 1,
+                                                    bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800',
+                                                    borderRadius: 1,
+                                                    border: '1px solid',
+                                                    borderColor: theme.palette.mode === 'light' ? 'grey.200' : 'grey.600'
+                                                }}>
+                                                    {formatPercentage(marketData.price_change_percentage_30d)}
+                                                    <Typography variant="caption" color="text.secondary">30d</Typography>
+                                                </Box>
+                                            </Stack>
+                                        </Box>
+                                    </Box>
+
+                                    {/* Key Metrics */}
+                                    <Grid container spacing={3}>
+                                        <Grid item xs={6} sm={3}>
+                                            <Box>
+                                                <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
+                                                    Market Cap
+                                                </Typography>
+                                                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                                                    {formatMarketCap(marketData.market_cap?.aud)}
                                                 </Typography>
                                             </Box>
-                                            {!isMobile && (
-                                                <>
-                                                    <Box sx={{ 
-                                                        display: 'flex', 
-                                                        alignItems: 'center', 
-                                                        gap: 1,
-                                                        p: 1.5,
-                                                        bgcolor: 'action.hover',
-                                                        borderRadius: 2
-                                                    }}>
-                                                        {formatPercentage(marketData.price_change_percentage_7d)}
-                                                        <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
-                                                            7d
-                                                        </Typography>
-                                                    </Box>
-                                                    <Box sx={{ 
-                                                        display: 'flex', 
-                                                        alignItems: 'center', 
-                                                        gap: 1,
-                                                        p: 1.5,
-                                                        bgcolor: 'action.hover',
-                                                        borderRadius: 2
-                                                    }}>
-                                                        {formatPercentage(marketData.price_change_percentage_30d)}
-                                                        <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
-                                                            30d
-                                                        </Typography>
-                                                    </Box>
-                                                </>
-                                            )}
-                                        </Stack>
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <Box>
+                                                <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
+                                                    24h Volume
+                                                </Typography>
+                                                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                                                    {formatMarketCap(marketData.total_volume?.aud)}
+                                                </Typography>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <Box>
+                                                <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
+                                                    Circulating Supply
+                                                </Typography>
+                                                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                                                    {formatSupply(marketData.circulating_supply)}
+                                                </Typography>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <Box>
+                                                <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
+                                                    All-Time High
+                                                </Typography>
+                                                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                                                    {formatPrice(marketData.ath?.aud)}
+                                                </Typography>
+                                            </Box>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+
+                                {/* Right Side - Chart */}
+                                <Grid item xs={12} lg={5}>
+                                    <Box sx={{ height: '100%', minHeight: 400 }}>
+                                        <PriceChart 
+                                            coinId={coinDetail.id}
+                                            coinName={coinDetail.name}
+                                            currentPrice={marketData.current_price?.aud}
+                                        />
                                     </Box>
-                                </Box>
-                            </Box>
-
-                            {/* Main Content Grid */}
-                            <Grid container spacing={3}>
-                                {/* Price Chart - Full Width */}
-                                <Grid item xs={12}>
-                                    <PriceChart 
-                                        coinId={coinDetail.id}
-                                        coinName={coinDetail.name}
-                                        currentPrice={marketData.current_price?.aud}
-                                    />
-                                </Grid>
-
-                                {/* Key Statistics Grid */}
-                                <Grid item xs={12} sm={6} md={3}>
-                                    <Card sx={{ 
-                                        p: 2, 
-                                        bgcolor: 'primary.main', 
-                                        color: 'white',
-                                        borderRadius: 2,
-                                        boxShadow: 2,
-                                        transition: 'transform 0.2s ease',
-                                        '&:hover': { transform: 'translateY(-2px)' }
-                                    }}>
-                                        <Typography variant="caption" sx={{ 
-                                            textTransform: 'uppercase', 
-                                            letterSpacing: 1,
-                                            opacity: 0.9
-                                        }}>
-                                            Market Cap
-                                        </Typography>
-                                        <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
-                                            {formatMarketCap(marketData.market_cap?.aud)}
-                                        </Typography>
-                                    </Card>
-                                </Grid>
-                                <Grid item xs={12} sm={6} md={3}>
-                                    <Card sx={{ 
-                                        p: 2, 
-                                        bgcolor: 'secondary.main', 
-                                        color: 'white',
-                                        borderRadius: 2,
-                                        boxShadow: 2,
-                                        transition: 'transform 0.2s ease',
-                                        '&:hover': { transform: 'translateY(-2px)' }
-                                    }}>
-                                        <Typography variant="caption" sx={{ 
-                                            textTransform: 'uppercase', 
-                                            letterSpacing: 1,
-                                            opacity: 0.9
-                                        }}>
-                                            24h Volume
-                                        </Typography>
-                                        <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
-                                            {formatMarketCap(marketData.total_volume?.aud)}
-                                        </Typography>
-                                    </Card>
-                                </Grid>
-                                <Grid item xs={12} sm={6} md={3}>
-                                    <Card sx={{ 
-                                        p: 2, 
-                                        bgcolor: 'success.main', 
-                                        color: 'white',
-                                        borderRadius: 2,
-                                        boxShadow: 2,
-                                        transition: 'transform 0.2s ease',
-                                        '&:hover': { transform: 'translateY(-2px)' }
-                                    }}>
-                                        <Typography variant="caption" sx={{ 
-                                            textTransform: 'uppercase', 
-                                            letterSpacing: 1,
-                                            opacity: 0.9
-                                        }}>
-                                            Circulating Supply
-                                        </Typography>
-                                        <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
-                                            {formatSupply(marketData.circulating_supply)}
-                                        </Typography>
-                                    </Card>
-                                </Grid>
-                                <Grid item xs={12} sm={6} md={3}>
-                                    <Card sx={{ 
-                                        p: 2, 
-                                        bgcolor: 'warning.main', 
-                                        color: 'white',
-                                        borderRadius: 2,
-                                        boxShadow: 2,
-                                        transition: 'transform 0.2s ease',
-                                        '&:hover': { transform: 'translateY(-2px)' }
-                                    }}>
-                                        <Typography variant="caption" sx={{ 
-                                            textTransform: 'uppercase', 
-                                            letterSpacing: 1,
-                                            opacity: 0.9
-                                        }}>
-                                            All-Time High
-                                        </Typography>
-                                        <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
-                                            {formatPrice(marketData.ath?.aud)}
-                                        </Typography>
-                                    </Card>
                                 </Grid>
                             </Grid>
                         </CardContent>
@@ -436,313 +369,316 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                     <Card 
                         elevation={0} 
                         sx={{ 
-                            mb: { xs: 2, sm: 3, md: 4 }, 
                             border: '1px solid', 
                             borderColor: 'divider',
                             borderRadius: 3,
-                            overflow: 'hidden',
-                            boxShadow: 3
+                            overflow: 'hidden'
                         }}
                     >
                         <Box sx={{ 
                             borderBottom: 1, 
                             borderColor: 'divider',
-                            bgcolor: 'grey.50'
+                            bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800'
                         }}>
                             <Tabs 
                                 value={activeTab} 
                                 onChange={(_, newValue) => setActiveTab(newValue)}
                                 variant={isMobile ? "fullWidth" : "standard"}
-                                scrollButtons={isMobile ? false : "auto"}
-                                allowScrollButtonsMobile
                                 sx={{ 
                                     px: { xs: 1, sm: 2, md: 3 }, 
                                     pt: { xs: 1, sm: 2 },
                                     '& .MuiTab-root': {
                                         fontWeight: 600,
                                         fontSize: { xs: '0.875rem', sm: '1rem' },
-                                        textTransform: 'none',
-                                        borderRadius: '8px 8px 0 0',
-                                        transition: 'all 0.3s ease',
-                                        '&.Mui-selected': {
-                                            bgcolor: 'white',
-                                            color: 'primary.main'
-                                        }
-                                    },
-                                    '& .MuiTabs-indicator': {
-                                        height: 3,
-                                        borderRadius: '3px 3px 0 0',
-                                        background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)'
+                                        textTransform: 'none'
                                     }
                                 }}
                             >
-                                <Tab label="Overview" />
-                                <Tab label="Markets" />
-                                <Tab label="About" />
+                                <Tab label="Market Data" icon={<AssessmentIcon />} iconPosition="start" />
+                                <Tab label="Supply & Economics" icon={<CurrencyExchangeIcon />} iconPosition="start" />
+                                <Tab label="About" icon={<AnalyticsIcon />} iconPosition="start" />
                             </Tabs>
                         </Box>
 
                         {/* Tab Content */}
-                        <Box sx={{ 
-                            p: { xs: 2, sm: 3, md: 4 },
-                            bgcolor: 'white'
-                        }}>
-                            {/* Overview Tab */}
+                        <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+                            {/* Market Data Tab */}
                             {activeTab === 0 && (
                                 <Box>
                                     <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
-                                        Detailed Analysis
+                                        Market Data & Performance
                                     </Typography>
+                                    
                                     <Grid container spacing={3}>
-                                        {/* Supply & Economics */}
-                                        <Grid item xs={12} lg={8}>
-                                            <Card elevation={2} sx={{ height: 'fit-content' }}>
-                                                <CardContent sx={{ p: 3 }}>
-                                                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, color: 'primary.main' }}>
-                                                        Supply & Economics
-                                                    </Typography>
-                                                    <Divider sx={{ mb: 3 }} />
-                                                    <Grid container spacing={3}>
-                                                        <Grid item xs={12} sm={6}>
-                                                            <Box sx={{ p: 2, bgcolor: 'success.main', color: 'white', borderRadius: 2, textAlign: 'center' }}>
-                                                                <Typography variant="caption" sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.9 }}>
-                                                                    Circulating Supply
-                                                                </Typography>
-                                                                <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
-                                                                    {formatSupply(marketData.circulating_supply)}
-                                                                </Typography>
-                                                            </Box>
-                                                        </Grid>
-                                                        <Grid item xs={12} sm={6}>
-                                                            <Box sx={{ p: 2, bgcolor: 'warning.main', color: 'white', borderRadius: 2, textAlign: 'center' }}>
-                                                                <Typography variant="caption" sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.9 }}>
-                                                                    Max Supply
-                                                                </Typography>
-                                                                <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
-                                                                    {marketData.max_supply ? formatSupply(marketData.max_supply) : '∞'}
-                                                                </Typography>
-                                                            </Box>
-                                                        </Grid>
-                                                        <Grid item xs={12} sm={6}>
-                                                            <Box sx={{ p: 2, bgcolor: 'info.main', color: 'white', borderRadius: 2, textAlign: 'center' }}>
-                                                                <Typography variant="caption" sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.9 }}>
-                                                                    Total Supply
-                                                                </Typography>
-                                                                <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
-                                                                    {marketData.total_supply ? formatSupply(marketData.total_supply) : 'N/A'}
-                                                                </Typography>
-                                                            </Box>
-                                                        </Grid>
-                                                        <Grid item xs={12} sm={6}>
-                                                            <Box sx={{ p: 2, bgcolor: 'secondary.main', color: 'white', borderRadius: 2, textAlign: 'center' }}>
-                                                                <Typography variant="caption" sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.9 }}>
-                                                                    Market Dominance
-                                                                </Typography>
-                                                                <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
-                                                                    {marketData.market_cap_rank ? `#${marketData.market_cap_rank}` : 'N/A'}
-                                                                </Typography>
-                                                            </Box>
-                                                        </Grid>
-                                                    </Grid>
-                                                </CardContent>
-                                            </Card>
+                                        {/* Price Information */}
+                                        <Grid item xs={12} md={4}>
+                                            <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2, height: '100%' }}>
+                                                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                    Price Information
+                                                </Typography>
+                                                <Stack spacing={2}>
+                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <Typography color="text.secondary">Current Price</Typography>
+                                                        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                                                            {formatPrice(marketData.current_price?.aud)}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <Typography color="text.secondary">24h High</Typography>
+                                                        <Typography sx={{ fontWeight: 600, color: 'success.main' }}>
+                                                            {formatPrice(marketData.high_24h?.aud)}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <Typography color="text.secondary">24h Low</Typography>
+                                                        <Typography sx={{ fontWeight: 600, color: 'error.main' }}>
+                                                            {formatPrice(marketData.low_24h?.aud)}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <Typography color="text.secondary">24h Change</Typography>
+                                                        <Typography sx={{ fontWeight: 600 }}>
+                                                            {formatPrice(marketData.price_change_24h_in_currency?.aud)}
+                                                        </Typography>
+                                                    </Box>
+                                                </Stack>
+                                            </Paper>
                                         </Grid>
-                                        
-                                        {/* Price Levels */}
-                                        <Grid item xs={12} lg={4}>
-                                            <Card elevation={2} sx={{ height: 'fit-content' }}>
-                                                <CardContent sx={{ p: 3 }}>
-                                                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, color: 'primary.main' }}>
-                                                        Price Levels
-                                                    </Typography>
-                                                    <Divider sx={{ mb: 3 }} />
-                                                    <Stack spacing={2.5}>
-                                                        <Box>
-                                                            <Typography variant="caption" color="success.main" sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1 }}>
-                                                                All-Time High
-                                                            </Typography>
-                                                            <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
+
+                                        {/* All-Time Records */}
+                                        <Grid item xs={12} md={4}>
+                                            <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2, height: '100%' }}>
+                                                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                    All-Time Records
+                                                </Typography>
+                                                <Stack spacing={2}>
+                                                    <Box>
+                                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
+                                                            <Typography color="text.secondary">All-Time High</Typography>
+                                                            <Typography sx={{ fontWeight: 600, color: 'success.main' }}>
                                                                 {formatPrice(marketData.ath?.aud)}
                                                             </Typography>
-                                                            <Typography variant="caption" color="text.secondary">
-                                                                {marketData.ath_date?.aud ? new Date(marketData.ath_date.aud).toLocaleDateString() : 'N/A'}
-                                                            </Typography>
                                                         </Box>
-                                                        
-                                                        <Box>
-                                                            <Typography variant="caption" color="error.main" sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1 }}>
-                                                                All-Time Low
-                                                            </Typography>
-                                                            <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
+                                                        <Typography variant="caption" color="text.secondary">
+                                                            {marketData.ath_date?.aud ? new Date(marketData.ath_date.aud).toLocaleDateString() : 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box>
+                                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
+                                                            <Typography color="text.secondary">All-Time Low</Typography>
+                                                            <Typography sx={{ fontWeight: 600, color: 'error.main' }}>
                                                                 {formatPrice(marketData.atl?.aud)}
                                                             </Typography>
-                                                            <Typography variant="caption" color="text.secondary">
-                                                                {marketData.atl_date?.aud ? new Date(marketData.atl_date.aud).toLocaleDateString() : 'N/A'}
-                                                            </Typography>
                                                         </Box>
-                                                        
-                                                        <Box sx={{ p: 2, bgcolor: 'grey.50', borderRadius: 2, textAlign: 'center' }}>
-                                                            <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
-                                                                Distance from ATH
-                                                            </Typography>
-                                                            <Box sx={{ mt: 1 }}>
-                                                                {formatPercentage(marketData.ath_change_percentage?.aud)}
-                                                            </Box>
-                                                        </Box>
-                                                    </Stack>
-                                                </CardContent>
-                                            </Card>
+                                                        <Typography variant="caption" color="text.secondary">
+                                                            {marketData.atl_date?.aud ? new Date(marketData.atl_date.aud).toLocaleDateString() : 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <Typography color="text.secondary">From ATH</Typography>
+                                                        {formatPercentage(marketData.ath_change_percentage?.aud)}
+                                                    </Box>
+                                                </Stack>
+                                            </Paper>
                                         </Grid>
-                                        
-                                        {/* Volume Analysis */}
-                                        <Grid item xs={12}>
-                                            <Card elevation={2}>
-                                                <CardContent sx={{ p: 3 }}>
-                                                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, color: 'primary.main' }}>
-                                                        Volume Analysis
-                                                    </Typography>
-                                                    <Divider sx={{ mb: 3 }} />
-                                                    <Grid container spacing={3}>
-                                                        <Grid item xs={12} sm={4}>
-                                                            <Box sx={{ textAlign: 'center', p: 3, bgcolor: 'primary.main', color: 'white', borderRadius: 2 }}>
-                                                                <Typography variant="caption" sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.9 }}>
-                                                                    24h Trading Volume
-                                                                </Typography>
-                                                                <Typography variant="h5" sx={{ fontWeight: 600, mt: 1 }}>
-                                                                    {formatMarketCap(marketData.total_volume?.aud)}
-                                                                </Typography>
-                                                            </Box>
-                                                        </Grid>
-                                                        <Grid item xs={12} sm={4}>
-                                                            <Box sx={{ textAlign: 'center', p: 3, bgcolor: 'secondary.main', color: 'white', borderRadius: 2 }}>
-                                                                <Typography variant="caption" sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.9 }}>
-                                                                    Market Cap
-                                                                </Typography>
-                                                                <Typography variant="h5" sx={{ fontWeight: 600, mt: 1 }}>
-                                                                    {formatMarketCap(marketData.market_cap?.aud)}
-                                                                </Typography>
-                                                            </Box>
-                                                        </Grid>
-                                                        <Grid item xs={12} sm={4}>
-                                                            <Box sx={{ textAlign: 'center', p: 3, bgcolor: 'success.main', color: 'white', borderRadius: 2 }}>
-                                                                <Typography variant="caption" sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.9 }}>
-                                                                    Volume/Market Cap
-                                                                </Typography>
-                                                                <Typography variant="h5" sx={{ fontWeight: 600, mt: 1 }}>
-                                                                    {marketData.total_volume?.aud && marketData.market_cap?.aud 
-                                                                        ? ((marketData.total_volume.aud / marketData.market_cap.aud) * 100).toFixed(2) + '%'
-                                                                        : 'N/A'
-                                                                    }
-                                                                </Typography>
-                                                            </Box>
-                                                        </Grid>
-                                                    </Grid>
-                                                </CardContent>
-                                            </Card>
+
+                                        {/* Market Metrics */}
+                                        <Grid item xs={12} md={4}>
+                                            <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2, height: '100%' }}>
+                                                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                    Market Metrics
+                                                </Typography>
+                                                <Stack spacing={2}>
+                                                    <Box sx={{ textAlign: 'center', py: 1 }}>
+                                                        <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
+                                                            Market Cap Rank
+                                                        </Typography>
+                                                        <Typography variant="h5" sx={{ fontWeight: 700, color: 'primary.main' }}>
+                                                            #{coinDetail.market_cap_rank || 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <Typography color="text.secondary" variant="body2">Volume/Market Cap</Typography>
+                                                        <Typography sx={{ fontWeight: 600 }}>
+                                                            {marketData.total_volume?.aud && marketData.market_cap?.aud 
+                                                                ? ((marketData.total_volume.aud / marketData.market_cap.aud) * 100).toFixed(2) + '%'
+                                                                : 'N/A'
+                                                            }
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <Typography color="text.secondary" variant="body2">Market Cap Change 24h</Typography>
+                                                        <Typography sx={{ fontWeight: 600 }}>
+                                                            {formatMarketCap(marketData.market_cap_change_24h_in_currency?.aud)}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <Typography color="text.secondary" variant="body2">Fully Diluted Valuation</Typography>
+                                                        <Typography sx={{ fontWeight: 600 }}>
+                                                            {formatMarketCap(marketData.fully_diluted_valuation?.aud)}
+                                                        </Typography>
+                                                    </Box>
+                                                </Stack>
+                                            </Paper>
                                         </Grid>
                                     </Grid>
                                 </Box>
                             )}
 
-                            {/* Markets Tab */}
+                            {/* Supply & Economics Tab */}
                             {activeTab === 1 && (
                                 <Box>
                                     <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
-                                        Trading Markets
+                                        Supply & Economics
                                     </Typography>
+                                    
                                     <Grid container spacing={3}>
+                                        {/* Token Supply */}
                                         <Grid item xs={12} md={8}>
-                                            <Card elevation={2}>
-                                                <CardContent sx={{ p: 3 }}>
-                                                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
-                                                        Market Information
-                                                    </Typography>
-                                                    <Divider sx={{ mb: 2 }} />
-                                                    <Stack spacing={2.5}>
-                                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                            <Typography color="text.secondary" sx={{ fontWeight: 500 }}>Market Cap Rank</Typography>
-                                                            <Chip 
-                                                                label={`#${coinDetail.market_cap_rank || 'N/A'}`}
-                                                                color="primary"
-                                                                size="small"
-                                                                sx={{ fontWeight: 600 }}
-                                                            />
-                                                        </Box>
-                                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                            <Typography color="text.secondary" sx={{ fontWeight: 500 }}>Genesis Date</Typography>
-                                                            <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                                                {coinDetail.genesis_date || 'N/A'}
+                                            <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2, mb: 3 }}>
+                                                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                    Token Supply
+                                                </Typography>
+                                                <Grid container spacing={2}>
+                                                    <Grid item xs={6} sm={3}>
+                                                        <Box sx={{ textAlign: 'center', p: 2, bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800', borderRadius: 1 }}>
+                                                            <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1, display: 'block' }}>
+                                                                Circulating Supply
+                                                            </Typography>
+                                                            <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
+                                                                {formatSupply(marketData.circulating_supply)}
                                                             </Typography>
                                                         </Box>
-                                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                            <Typography color="text.secondary" sx={{ fontWeight: 500 }}>Hash Algorithm</Typography>
-                                                            <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                                                {coinDetail.hashing_algorithm || 'N/A'}
+                                                    </Grid>
+                                                    <Grid item xs={6} sm={3}>
+                                                        <Box sx={{ textAlign: 'center', p: 2, bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800', borderRadius: 1 }}>
+                                                            <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1, display: 'block' }}>
+                                                                Total Supply
+                                                            </Typography>
+                                                            <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
+                                                                {formatSupply(marketData.total_supply)}
                                                             </Typography>
                                                         </Box>
-                                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                            <Typography color="text.secondary" sx={{ fontWeight: 500 }}>Block Time (minutes)</Typography>
-                                                            <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                                                {coinDetail.block_time_in_minutes || 'N/A'}
+                                                    </Grid>
+                                                    <Grid item xs={6} sm={3}>
+                                                        <Box sx={{ textAlign: 'center', p: 2, bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800', borderRadius: 1 }}>
+                                                            <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1, display: 'block' }}>
+                                                                Max Supply
+                                                            </Typography>
+                                                            <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
+                                                                {marketData.max_supply ? formatSupply(marketData.max_supply) : '∞'}
                                                             </Typography>
                                                         </Box>
-                                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                            <Typography color="text.secondary" sx={{ fontWeight: 500 }}>Categories</Typography>
-                                                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, maxWidth: '60%', justifyContent: 'flex-end' }}>
-                                                                {coinDetail.categories && coinDetail.categories.length > 0 ? (
-                                                                    coinDetail.categories.slice(0, 3).map((category, index) => (
-                                                                        <Chip 
-                                                                            key={index}
-                                                                            label={category}
-                                                                            size="small"
-                                                                            variant="outlined"
-                                                                            sx={{ fontSize: '0.75rem' }}
-                                                                        />
-                                                                    ))
-                                                                ) : (
-                                                                    <Typography variant="body2" sx={{ fontWeight: 600 }}>N/A</Typography>
-                                                                )}
+                                                    </Grid>
+                                                    <Grid item xs={6} sm={3}>
+                                                        <Box sx={{ textAlign: 'center', p: 2, bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800', borderRadius: 1 }}>
+                                                            <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1, display: 'block' }}>
+                                                                Supply Ratio
+                                                            </Typography>
+                                                            <Typography variant="h6" sx={{ fontWeight: 600, mt: 1 }}>
+                                                                {marketData.max_supply && marketData.circulating_supply
+                                                                    ? `${((marketData.circulating_supply / marketData.max_supply) * 100).toFixed(1)}%`
+                                                                    : 'N/A'
+                                                                }
+                                                            </Typography>
+                                                        </Box>
+                                                    </Grid>
+                                                </Grid>
+                                            </Paper>
+
+                                            {/* Community & Development */}
+                                            <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2 }}>
+                                                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                    Community & Development
+                                                </Typography>
+                                                <Grid container spacing={3}>
+                                                    <Grid item xs={12} sm={6}>
+                                                        <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 2, color: 'text.secondary' }}>
+                                                            Community Stats
+                                                        </Typography>
+                                                        <Stack spacing={1.5}>
+                                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                                <Typography variant="body2">Twitter Followers</Typography>
+                                                                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                                                                    {communityData.twitter_followers?.toLocaleString() || 'N/A'}
+                                                                </Typography>
                                                             </Box>
-                                                        </Box>
-                                                    </Stack>
-                                                </CardContent>
-                                            </Card>
+                                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                                <Typography variant="body2">Reddit Subscribers</Typography>
+                                                                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                                                                    {communityData.reddit_subscribers?.toLocaleString() || 'N/A'}
+                                                                </Typography>
+                                                            </Box>
+                                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                                <Typography variant="body2">Telegram Users</Typography>
+                                                                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                                                                    {communityData.telegram_channel_user_count?.toLocaleString() || 'N/A'}
+                                                                </Typography>
+                                                            </Box>
+                                                        </Stack>
+                                                    </Grid>
+                                                    <Grid item xs={12} sm={6}>
+                                                        <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 2, color: 'text.secondary' }}>
+                                                            Development Activity
+                                                        </Typography>
+                                                        <Stack spacing={1.5}>
+                                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                                <Typography variant="body2">GitHub Stars</Typography>
+                                                                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                                                                    {developerData.stars?.toLocaleString() || 'N/A'}
+                                                                </Typography>
+                                                            </Box>
+                                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                                <Typography variant="body2">GitHub Forks</Typography>
+                                                                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                                                                    {developerData.forks?.toLocaleString() || 'N/A'}
+                                                                </Typography>
+                                                            </Box>
+                                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                                <Typography variant="body2">Contributors</Typography>
+                                                                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                                                                    {developerData.total_contributors || 'N/A'}
+                                                                </Typography>
+                                                            </Box>
+                                                        </Stack>
+                                                    </Grid>
+                                                </Grid>
+                                            </Paper>
                                         </Grid>
+
+                                        {/* Technical Details */}
                                         <Grid item xs={12} md={4}>
-                                            <Card elevation={2}>
-                                                <CardContent sx={{ p: 3 }}>
-                                                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
-                                                        Developer Stats
-                                                    </Typography>
-                                                    <Divider sx={{ mb: 2 }} />
-                                                    <Stack spacing={2.5}>
-                                                        <Box>
-                                                            <Typography color="text.secondary" sx={{ fontWeight: 500, mb: 1 }}>GitHub Stars</Typography>
-                                                            <Typography variant="h6" sx={{ fontWeight: 600, color: 'primary.main' }}>
-                                                                {coinDetail.developer_data?.stars || 'N/A'}
-                                                            </Typography>
-                                                        </Box>
-                                                        <Box>
-                                                            <Typography color="text.secondary" sx={{ fontWeight: 500, mb: 1 }}>Forks</Typography>
-                                                            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                                                                {coinDetail.developer_data?.forks || 'N/A'}
-                                                            </Typography>
-                                                        </Box>
-                                                        <Box>
-                                                            <Typography color="text.secondary" sx={{ fontWeight: 500, mb: 1 }}>Contributors</Typography>
-                                                            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                                                                {coinDetail.developer_data?.total_contributors || 'N/A'}
-                                                            </Typography>
-                                                        </Box>
-                                                        <Box>
-                                                            <Typography color="text.secondary" sx={{ fontWeight: 500, mb: 1 }}>Last Update</Typography>
-                                                            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                                {coinDetail.last_updated ? new Date(coinDetail.last_updated).toLocaleDateString() : 'N/A'}
-                                                            </Typography>
-                                                        </Box>
-                                                    </Stack>
-                                                </CardContent>
-                                            </Card>
+                                            <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2, height: 'fit-content' }}>
+                                                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                    Technical Details
+                                                </Typography>
+                                                <Stack spacing={2.5}>
+                                                    <Box>
+                                                        <Typography color="text.secondary" variant="body2" sx={{ mb: 0.5 }}>Genesis Date</Typography>
+                                                        <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                                                            {coinDetail.genesis_date || 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box>
+                                                        <Typography color="text.secondary" variant="body2" sx={{ mb: 0.5 }}>Hash Algorithm</Typography>
+                                                        <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                                                            {coinDetail.hashing_algorithm || 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box>
+                                                        <Typography color="text.secondary" variant="body2" sx={{ mb: 0.5 }}>Block Time</Typography>
+                                                        <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                                                            {coinDetail.block_time_in_minutes ? `${coinDetail.block_time_in_minutes} min` : 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box>
+                                                        <Typography color="text.secondary" variant="body2" sx={{ mb: 0.5 }}>Country of Origin</Typography>
+                                                        <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                                                            {coinDetail.country_origin || 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                </Stack>
+                                            </Paper>
                                         </Grid>
                                     </Grid>
                                 </Box>
@@ -754,63 +690,146 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                     <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
                                         About {coinDetail.name}
                                     </Typography>
-                                    {coinDetail.description?.en && (
-                                        <Card elevation={1} sx={{ mb: 3 }}>
-                                            <CardContent sx={{ p: 3 }}>
-                                                <Typography 
-                                                    variant="body1" 
-                                                    sx={{ lineHeight: 1.7 }}
-                                                    dangerouslySetInnerHTML={{ __html: coinDetail.description.en }}
-                                                />
-                                            </CardContent>
-                                        </Card>
-                                    )}
                                     
-                                    {/* Links Section */}
-                                    <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-                                        Links & Resources
-                                    </Typography>
-                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, justifyContent: 'center' }}>
-                                        {links.homepage?.[0] && (
-                                            <Button
-                                                variant="outlined"
-                                                startIcon={<LanguageIcon />}
-                                                component={Link}
-                                                href={links.homepage[0]}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                size="small"
-                                            >
-                                                Website
-                                            </Button>
-                                        )}
-                                        {links.twitter_screen_name && (
-                                            <Button
-                                                variant="outlined"
-                                                startIcon={<TwitterIcon />}
-                                                component={Link}
-                                                href={`https://twitter.com/${links.twitter_screen_name}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                size="small"
-                                            >
-                                                Twitter
-                                            </Button>
-                                        )}
-                                        {links.repos_url?.github?.[0] && (
-                                            <Button
-                                                variant="outlined"
-                                                startIcon={<GitHubIcon />}
-                                                component={Link}
-                                                href={links.repos_url.github[0]}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                size="small"
-                                            >
-                                                GitHub
-                                            </Button>
-                                        )}
-                                    </Box>
+                                    <Grid container spacing={3}>
+                                        {/* Description */}
+                                        <Grid item xs={12} md={8}>
+                                            {coinDetail.description?.en && (
+                                                <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2, mb: 3 }}>
+                                                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                        Overview
+                                                    </Typography>
+                                                    <Typography 
+                                                        variant="body1" 
+                                                        sx={{ lineHeight: 1.7 }}
+                                                        dangerouslySetInnerHTML={{ __html: coinDetail.description.en }}
+                                                    />
+                                                </Paper>
+                                            )}
+
+                                            {/* Categories */}
+                                            {coinDetail.categories && coinDetail.categories.length > 0 && (
+                                                <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2, mb: 3 }}>
+                                                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                        Categories
+                                                    </Typography>
+                                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                                                        {coinDetail.categories.map((category, index) => (
+                                                            <Chip 
+                                                                key={index}
+                                                                label={category}
+                                                                variant="outlined"
+                                                                size="small"
+                                                            />
+                                                        ))}
+                                                    </Box>
+                                                </Paper>
+                                            )}
+
+                                            {/* Links & Resources */}
+                                            <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2 }}>
+                                                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                    Links & Resources
+                                                </Typography>
+                                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                                                    {links.homepage?.[0] && (
+                                                        <Button
+                                                            variant="outlined"
+                                                            startIcon={<LanguageIcon />}
+                                                            component={Link}
+                                                            href={links.homepage[0]}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            size="small"
+                                                        >
+                                                            Official Website
+                                                        </Button>
+                                                    )}
+                                                    {links.twitter_screen_name && (
+                                                        <Button
+                                                            variant="outlined"
+                                                            startIcon={<TwitterIcon />}
+                                                            component={Link}
+                                                            href={`https://twitter.com/${links.twitter_screen_name}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            size="small"
+                                                        >
+                                                            Twitter
+                                                        </Button>
+                                                    )}
+                                                    {links.repos_url?.github?.[0] && (
+                                                        <Button
+                                                            variant="outlined"
+                                                            startIcon={<GitHubIcon />}
+                                                            component={Link}
+                                                            href={links.repos_url.github[0]}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            size="small"
+                                                        >
+                                                            GitHub Repository
+                                                        </Button>
+                                                    )}
+                                                    {links.blockchain_site?.[0] && (
+                                                        <Button
+                                                            variant="outlined"
+                                                            startIcon={<SecurityIcon />}
+                                                            component={Link}
+                                                            href={links.blockchain_site[0]}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            size="small"
+                                                        >
+                                                            Blockchain Explorer
+                                                        </Button>
+                                                    )}
+                                                </Box>
+                                            </Paper>
+                                        </Grid>
+
+                                        {/* Platform Information */}
+                                        <Grid item xs={12} md={4}>
+                                            <Paper elevation={0} sx={{ p: 3, border: '1px solid', borderColor: 'divider', borderRadius: 2, height: 'fit-content' }}>
+                                                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+                                                    Platform Information
+                                                </Typography>
+                                                {coinDetail.platforms && Object.keys(coinDetail.platforms).length > 0 ? (
+                                                    <Stack spacing={2}>
+                                                        {Object.entries(coinDetail.platforms).map(([platform, address], index) => (
+                                                            <Box key={index}>
+                                                                <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
+                                                                    {platform.charAt(0).toUpperCase() + platform.slice(1)}
+                                                                </Typography>
+                                                                <Typography variant="body2" sx={{ 
+                                                                    fontFamily: 'monospace', 
+                                                                    fontSize: '0.75rem',
+                                                                    wordBreak: 'break-all',
+                                                                    bgcolor: theme.palette.mode === 'light' ? 'grey.100' : 'grey.700',
+                                                                    p: 1,
+                                                                    borderRadius: 1
+                                                                }}>
+                                                                    {address || 'Native Blockchain'}
+                                                                </Typography>
+                                                            </Box>
+                                                        ))}
+                                                    </Stack>
+                                                ) : (
+                                                    <Box sx={{ textAlign: 'center', py: 2 }}>
+                                                        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                                                            Platform
+                                                        </Typography>
+                                                        <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                                                            Native Blockchain
+                                                        </Typography>
+                                                        <Typography variant="caption" color="text.secondary">
+                                                            This cryptocurrency operates on its own blockchain
+                                                        </Typography>
+                                                    </Box>
+                                                )}
+                                            </Paper>
+                                        </Grid>
+                                    </Grid>
                                 </Box>
                             )}
                         </Box>
