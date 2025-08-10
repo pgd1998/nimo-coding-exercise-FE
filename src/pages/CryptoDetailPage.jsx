@@ -30,7 +30,13 @@ const CryptoDetailPage = () => {
 
     if (isError || !coinDetail) {
         return (
-            <Container maxWidth="xl" sx={{ px: { xs: 1, sm: 2, md: 3 } }}>
+            <Container 
+                maxWidth="xl" 
+                sx={{ 
+                    px: { xs: 2, sm: 3, md: 4 },
+                    py: { xs: 2, sm: 3 }
+                }}
+            >
                 <Alert severity="error" sx={{ mt: 4 }}>
                     {isError || 'Cryptocurrency not found'}
                 </Alert>
@@ -39,7 +45,13 @@ const CryptoDetailPage = () => {
     }
 
     return (
-        <Container maxWidth="xl" sx={{ px: { xs: 1, sm: 2, md: 3 } }}>
+        <Container 
+            maxWidth="xl" 
+            sx={{ 
+                px: { xs: 2, sm: 3, md: 4 },
+                py: { xs: 2, sm: 3 }
+            }}
+        >
             <CryptoDetails 
                 coinDetail={coinDetail} 
                 onBackClick={handleBackClick} 

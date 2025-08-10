@@ -103,7 +103,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
     return (
         <Fade in timeout={800}>
-            <Box sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
+            <Box sx={{ py: 4, px: { xs: 1, sm: 0 } }}>
                 {/* Navigation Bar */}
                 <Grow in timeout={600}>
                     <Box sx={{ 
@@ -121,22 +121,22 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                             size={isMobile ? "small" : "medium"}
                             sx={{ 
                                 borderRadius: 2,
-                                px: { xs: 2, sm: 2, md: 3 },
-                                py: { xs: 0.75, sm: 1, md: 1.5 },
+                                px: 3,
+                                py: 1.5,
                                 fontWeight: 600,
-                                fontSize: { xs: '0.875rem', sm: '0.9rem', md: '1rem' },
+                                fontSize: '1rem',
                                 alignSelf: { xs: 'flex-start', sm: 'auto' },
-                                maxWidth: { xs: 'fit-content', sm: 'none' }
+                                maxWidth: 'fit-content'
                             }}
                         >
                             {isMobile ? 'Back' : 'Back to Market'}
                         </Button>
                         <Stack 
                             direction="row" 
-                            spacing={{ xs: 0.5, sm: 1 }}
+                            spacing={1}
                             sx={{ 
                                 alignSelf: { xs: 'flex-end', sm: 'auto' },
-                                justifyContent: { xs: 'flex-end', sm: 'flex-end' }
+                                justifyContent: 'flex-end'
                             }}
                         >
                             <ThemeToggle size={isMobile ? "small" : "medium"} />
@@ -149,26 +149,24 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                     <Card 
                         elevation={0} 
                         sx={{ 
-                            mb: { xs: 2, sm: 3, md: 4 }, 
+                            mb: 4, 
                             border: '1px solid', 
                             borderColor: 'divider',
                             borderRadius: 3,
                             overflow: 'hidden'
                         }}
                     >
-                        <CardContent sx={{ 
-                            p: { xs: 2, sm: 3, md: 4 }
-                        }}>
-                            <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
+                        <CardContent sx={{ p: 4 }}>
+                            <Grid container spacing={3}>
                                 {/* Left Side - Coin Information */}
-                                <Grid item xs={12} lg={7}>
+                                <Grid item xs={12} lg={8}>
                                     {/* Coin Header */}
                                     <Box sx={{ 
                                         display: 'flex', 
                                         flexDirection: { xs: 'column', sm: 'row' },
                                         alignItems: { xs: 'center', sm: 'center' }, 
-                                        gap: { xs: 2, sm: 3 }, 
-                                        mb: { xs: 2, sm: 3 },
+                                        gap: 3, 
+                                        mb: 3,
                                         textAlign: { xs: 'center', sm: 'left' }
                                     }}>
                                         <Avatar 
@@ -185,17 +183,17 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                 display: 'flex', 
                                                 flexDirection: { xs: 'column', sm: 'row' },
                                                 alignItems: { xs: 'center', sm: 'center' }, 
-                                                gap: { xs: 1, sm: 2 }, 
-                                                mb: { xs: 1, sm: 1 },
+                                                gap: 2, 
+                                                mb: 1.5,
                                                 flexWrap: 'wrap',
                                                 justifyContent: { xs: 'center', sm: 'flex-start' }
                                             }}>
                                                 <Typography 
-                                                    variant={{ xs: "h5", sm: "h4", md: "h3" }} 
+                                                    variant="h3" 
                                                     component="h1" 
                                                     sx={{ 
                                                         fontWeight: 700,
-                                                        fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
+                                                        fontSize: { xs: '1.75rem', sm: '2.25rem', md: '2.75rem' },
                                                         lineHeight: 1.2,
                                                         textAlign: { xs: 'center', sm: 'left' }
                                                     }}
@@ -231,12 +229,12 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                             
                                             {/* Price Section */}
                                             <Typography 
-                                                variant={{ xs: "h4", sm: "h3", md: "h2" }}
+                                                variant="h2"
                                                 sx={{ 
                                                     fontWeight: 700, 
                                                     color: 'text.primary',
-                                                    mb: { xs: 1.5, sm: 2 },
-                                                    fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' },
+                                                    mb: 2,
+                                                    fontSize: { xs: '2rem', sm: '2.5rem', md: '3.25rem' },
                                                     textAlign: { xs: 'center', sm: 'left' }
                                                 }}
                                             >
@@ -245,19 +243,20 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                             
                                             {/* Price Changes */}
                                             <Stack 
-                                                direction={{ xs: 'column', sm: 'row' }}
-                                                spacing={{ xs: 1, sm: 2 }} 
+                                                direction="row"
+                                                spacing={2} 
                                                 sx={{ 
                                                     flexWrap: 'wrap', 
-                                                    gap: { xs: 1, sm: 1.5 },
-                                                    alignItems: { xs: 'center', sm: 'flex-start' }
+                                                    gap: 1.5,
+                                                    alignItems: 'center',
+                                                    justifyContent: { xs: 'center', sm: 'flex-start' }
                                                 }}
                                             >
                                                 <Box sx={{ 
                                                     display: 'flex', 
                                                     alignItems: 'center', 
                                                     gap: 1,
-                                                    p: { xs: 0.75, sm: 1 },
+                                                    p: 1,
                                                     bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800',
                                                     borderRadius: 1,
                                                     border: '1px solid',
@@ -265,13 +264,13 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                     minWidth: 'fit-content'
                                                 }}>
                                                     {formatPercentage(marketData.price_change_percentage_24h)}
-                                                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>24h</Typography>
+                                                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>24h</Typography>
                                                 </Box>
                                                 <Box sx={{ 
                                                     display: 'flex', 
                                                     alignItems: 'center', 
                                                     gap: 1,
-                                                    p: { xs: 0.75, sm: 1 },
+                                                    p: 1,
                                                     bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800',
                                                     borderRadius: 1,
                                                     border: '1px solid',
@@ -279,13 +278,13 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                     minWidth: 'fit-content'
                                                 }}>
                                                     {formatPercentage(marketData.price_change_percentage_7d)}
-                                                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>7d</Typography>
+                                                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>7d</Typography>
                                                 </Box>
                                                 <Box sx={{ 
                                                     display: 'flex', 
                                                     alignItems: 'center', 
                                                     gap: 1,
-                                                    p: { xs: 0.75, sm: 1 },
+                                                    p: 1,
                                                     bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800',
                                                     borderRadius: 1,
                                                     border: '1px solid',
@@ -293,107 +292,106 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                     minWidth: 'fit-content'
                                                 }}>
                                                     {formatPercentage(marketData.price_change_percentage_30d)}
-                                                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>30d</Typography>
+                                                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>30d</Typography>
                                                 </Box>
                                             </Stack>
                                         </Box>
                                     </Box>
 
                                     {/* Key Metrics */}
-                                    <Grid container spacing={{ xs: 3, sm: 4 }} sx={{ mt: { xs: 1, sm: 2 } }}>
+                                    <Grid container spacing={3} sx={{ mt: 2 }}>
                                         <Grid item xs={12} md={6}>
                                             <Box sx={{
                                                 border: '1px solid',
                                                 borderColor: 'divider',
                                                 borderRadius: 2,
-                                                p: { xs: 2, sm: 3 },
-                                                bgcolor: 'background.paper'
+                                                p: 3,
+                                                bgcolor: 'background.paper',
+                                                height: '100%',
+                                                display: 'flex',
+                                                flexDirection: 'column'
                                             }}>
-                                                <Grid container spacing={{ xs: 2, sm: 3 }} direction="column">
-                                                <Grid item>
-                                                    <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                                                <Stack spacing={2.5} sx={{ flex: 1 }}>
+                                                    <Box>
                                                         <Typography variant="caption" color="text.secondary" sx={{ 
                                                             textTransform: 'uppercase', 
                                                             letterSpacing: 1,
-                                                            fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                            fontSize: '0.75rem',
                                                             display: 'block',
                                                             mb: 0.5
                                                         }}>
                                                             Market Cap (AUD)
                                                         </Typography>
-                                                        <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
+                                                        <Typography variant="h6" sx={{ 
                                                             fontWeight: 600,
-                                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
+                                                            fontSize: '1.25rem'
                                                         }}>
                                                             {formatMarketCap(marketData.market_cap?.aud)}
                                                         </Typography>
                                                     </Box>
-                                                </Grid>
-                                                <Grid item>
-                                                    <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                                                    <Box>
                                                         <Typography variant="caption" color="text.secondary" sx={{ 
                                                             textTransform: 'uppercase', 
                                                             letterSpacing: 1,
-                                                            fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                            fontSize: '0.75rem',
                                                             display: 'block',
                                                             mb: 0.5
                                                         }}>
                                                             24h Volume (AUD)
                                                         </Typography>
-                                                        <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
+                                                        <Typography variant="h6" sx={{ 
                                                             fontWeight: 600,
-                                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
+                                                            fontSize: '1.25rem'
                                                         }}>
                                                             {formatMarketCap(marketData.total_volume?.aud)}
                                                         </Typography>
                                                     </Box>
-                                                </Grid>
-                                                <Grid item>
-                                                    <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                                                    <Box>
                                                         <Typography variant="caption" color="text.secondary" sx={{ 
                                                             textTransform: 'uppercase', 
                                                             letterSpacing: 1,
-                                                            fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                            fontSize: '0.75rem',
                                                             display: 'block',
                                                             mb: 0.5
                                                         }}>
                                                             Circulating Supply
                                                         </Typography>
-                                                        <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
+                                                        <Typography variant="h6" sx={{ 
                                                             fontWeight: 600,
-                                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
+                                                            fontSize: '1.25rem'
                                                         }}>
                                                             {formatSupply(marketData.circulating_supply)}
                                                         </Typography>
                                                     </Box>
-                                                </Grid>
-                                                <Grid item>
-                                                    <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                                                    <Box>
                                                         <Typography variant="caption" color="text.secondary" sx={{ 
                                                             textTransform: 'uppercase', 
                                                             letterSpacing: 1,
-                                                            fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                            fontSize: '0.75rem',
                                                             display: 'block',
                                                             mb: 0.5
                                                         }}>
                                                             All-Time High
                                                         </Typography>
-                                                        <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
+                                                        <Typography variant="h6" sx={{ 
                                                             fontWeight: 600,
-                                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
+                                                            fontSize: '1.25rem'
                                                         }}>
                                                             {formatPrice(marketData.ath?.aud)}
                                                         </Typography>
                                                     </Box>
-                                                </Grid>
-                                                </Grid>
+                                                </Stack>
                                             </Box>
                                         </Grid>
                                         <Grid item xs={12} md={6}>
                                             <Box sx={{ 
-                                                height: { xs: 400, sm: 450, md: 500 }, 
-                                                minHeight: { xs: 350, sm: 400, md: 450 },
-                                                mt: { xs: 2, md: 0 }
+                                                height: 480, 
+                                                minHeight: 400,
+                                                border: '1px solid',
+                                                borderColor: 'divider',
+                                                borderRadius: 2,
+                                                p: 2,
+                                                bgcolor: 'background.paper'
                                             }}>
                                                 <PriceChart 
                                                     coinId={coinDetail.id}
@@ -469,43 +467,44 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
                         {/* Tab Content */}
                         <Box sx={{ 
-                            p: { xs: 2, sm: 3, md: 4 }, 
+                            p: 4, 
                             width: '100%', 
                             maxWidth: '100%',
-                            minHeight: { xs: 400, sm: 450, md: 500 }
+                            minHeight: 600
                         }}>
                             {/* Market Data Tab */}
                             {activeTab === 0 && (
-                                <Box sx={{ width: '100%', maxWidth: '100%' }}>
-                                    <Typography variant={{ xs: "h6", sm: "h5" }} sx={{ 
-                                        mb: { xs: 2, sm: 3 }, 
+                                <Box sx={{ width: '100%', maxWidth: '100%', minHeight: 520 }}>
+                                    <Typography variant="h5" sx={{ 
+                                        mb: 3, 
                                         fontWeight: 600,
-                                        fontSize: { xs: '1.1rem', sm: '1.5rem' },
+                                        fontSize: '1.5rem',
                                         textAlign: { xs: 'center', sm: 'left' }
                                     }}>
                                         Market Data & Performance
                                     </Typography>
                                     
-                                    <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%', margin: 0 }}>
+                                    <Grid container spacing={3} sx={{ width: '100%', margin: 0 }}>
                                         {/* Price Information */}
-                                        <Grid item xs={12} lg={4}>
+                                        <Grid item xs={12} md={6} lg={4}>
                                             <Paper elevation={0} sx={{ 
-                                                p: { xs: 2, sm: 3 }, 
+                                                p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
                                                 display: 'flex',
-                                                flexDirection: 'column'
+                                                flexDirection: 'column',
+                                                minHeight: 280
                                             }}>
-                                                <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
                                                     mb: 2,
-                                                    fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                    fontSize: '1.25rem'
                                                 }}>
                                                     Price Information (AUD)
                                                 </Typography>
-                                                <Stack spacing={2}>
+                                                <Stack spacing={2} sx={{ flex: 1 }}>
                                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                                         <Typography color="text.secondary">Current Price</Typography>
                                                         <Typography variant="h6" sx={{ fontWeight: 600 }}>
@@ -535,24 +534,25 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* All-Time Records */}
-                                        <Grid item xs={12} lg={4}>
+                                        <Grid item xs={12} md={6} lg={4}>
                                             <Paper elevation={0} sx={{ 
-                                                p: { xs: 2, sm: 3 }, 
+                                                p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
                                                 display: 'flex',
-                                                flexDirection: 'column'
+                                                flexDirection: 'column',
+                                                minHeight: 280
                                             }}>
-                                                <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
                                                     mb: 2,
-                                                    fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                    fontSize: '1.25rem'
                                                 }}>
                                                     All-Time Records
                                                 </Typography>
-                                                <Stack spacing={2}>
+                                                <Stack spacing={2} sx={{ flex: 1 }}>
                                                     <Box>
                                                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
                                                             <Typography color="text.secondary">All-Time High</Typography>
@@ -584,24 +584,25 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* Market Metrics */}
-                                        <Grid item xs={12} lg={4}>
+                                        <Grid item xs={12} md={12} lg={4}>
                                             <Paper elevation={0} sx={{ 
-                                                p: { xs: 2, sm: 3 }, 
+                                                p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
                                                 display: 'flex',
-                                                flexDirection: 'column'
+                                                flexDirection: 'column',
+                                                minHeight: 280
                                             }}>
-                                                <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
                                                     mb: 2,
-                                                    fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                    fontSize: '1.25rem'
                                                 }}>
                                                     Market Metrics
                                                 </Typography>
-                                                <Stack spacing={2}>
+                                                <Stack spacing={2} sx={{ flex: 1 }}>
                                                     <Box sx={{ textAlign: 'center', py: 1 }}>
                                                         <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
                                                             Market Cap Rank
@@ -640,129 +641,148 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
                             {/* Supply & Economics Tab */}
                             {activeTab === 1 && (
-                                <Box sx={{ width: '100%', maxWidth: '100%' }}>
-                                    <Typography variant={{ xs: "h6", sm: "h5" }} sx={{ 
-                                        mb: { xs: 2, sm: 3 }, 
+                                <Box sx={{ width: '100%', maxWidth: '100%', minHeight: 520 }}>
+                                    <Typography variant="h5" sx={{ 
+                                        mb: 3, 
                                         fontWeight: 600,
-                                        fontSize: { xs: '1.1rem', sm: '1.5rem' },
+                                        fontSize: '1.5rem',
                                         textAlign: { xs: 'center', sm: 'left' }
                                     }}>
                                         Supply & Economics
                                     </Typography>
                                     
-                                    <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%', margin: 0 }}>
+                                    <Grid container spacing={3} sx={{ width: '100%', margin: 0 }}>
                                         {/* Token Supply */}
-                                        <Grid item xs={12} lg={4}>
+                                        <Grid item xs={12} md={4}>
                                             <Paper elevation={0} sx={{ 
-                                                p: { xs: 2, sm: 3 }, 
+                                                p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
-                                                height: '100%'
+                                                height: '100%',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                minHeight: 320
                                             }}>
-                                                <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
                                                     mb: 2,
-                                                    fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                    fontSize: '1.25rem'
                                                 }}>
                                                     Token Supply
                                                 </Typography>
-                                                <Grid container spacing={{ xs: 1.5, sm: 2 }}>
-                                                    <Grid item xs={6} lg={6}>
+                                                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ flex: 1 }}>
+                                                    <Box sx={{ flex: 1 }}>
                                                         <Box sx={{ 
                                                             textAlign: 'center', 
-                                                            p: { xs: 1.5, sm: 2 }, 
+                                                            p: 1.5, 
                                                             bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800', 
-                                                            borderRadius: 1 
+                                                            borderRadius: 1,
+                                                            height: '100%',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            justifyContent: 'center'
                                                         }}>
                                                             <Typography variant="caption" color="text.secondary" sx={{ 
                                                                 textTransform: 'uppercase', 
                                                                 letterSpacing: 1, 
                                                                 display: 'block',
-                                                                fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                                fontSize: '0.7rem',
                                                                 mb: 0.5
                                                             }}>
                                                                 Circulating Supply
                                                             </Typography>
-                                                            <Typography variant={{ xs: "body2", sm: "h6" }} sx={{ 
+                                                            <Typography variant="body2" sx={{ 
                                                                 fontWeight: 600, 
                                                                 mt: 1,
-                                                                fontSize: { xs: '0.875rem', sm: '1.1rem' }
+                                                                fontSize: '0.875rem'
                                                             }}>
                                                                 {formatSupply(marketData.circulating_supply)}
                                                             </Typography>
                                                         </Box>
-                                                    </Grid>
-                                                    <Grid item xs={6} lg={6}>
+                                                    </Box>
+                                                    <Box sx={{ flex: 1 }}>
                                                         <Box sx={{ 
                                                             textAlign: 'center', 
-                                                            p: { xs: 1.5, sm: 2 }, 
+                                                            p: 1.5, 
                                                             bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800', 
-                                                            borderRadius: 1 
+                                                            borderRadius: 1,
+                                                            height: '100%',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            justifyContent: 'center'
                                                         }}>
                                                             <Typography variant="caption" color="text.secondary" sx={{ 
                                                                 textTransform: 'uppercase', 
                                                                 letterSpacing: 1, 
                                                                 display: 'block',
-                                                                fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                                fontSize: '0.7rem',
                                                                 mb: 0.5
                                                             }}>
                                                                 Total Supply
                                                             </Typography>
-                                                            <Typography variant={{ xs: "body2", sm: "h6" }} sx={{ 
+                                                            <Typography variant="body2" sx={{ 
                                                                 fontWeight: 600, 
                                                                 mt: 1,
-                                                                fontSize: { xs: '0.875rem', sm: '1.1rem' }
+                                                                fontSize: '0.875rem'
                                                             }}>
                                                                 {formatSupply(marketData.total_supply)}
                                                             </Typography>
                                                         </Box>
-                                                    </Grid>
-                                                    <Grid item xs={6} lg={6}>
+                                                    </Box>
+                                                    <Box sx={{ flex: 1 }}>
                                                         <Box sx={{ 
                                                             textAlign: 'center', 
-                                                            p: { xs: 1.5, sm: 2 }, 
+                                                            p: 1.5, 
                                                             bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800', 
-                                                            borderRadius: 1 
+                                                            borderRadius: 1,
+                                                            height: '100%',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            justifyContent: 'center'
                                                         }}>
                                                             <Typography variant="caption" color="text.secondary" sx={{ 
                                                                 textTransform: 'uppercase', 
                                                                 letterSpacing: 1, 
                                                                 display: 'block',
-                                                                fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                                fontSize: '0.7rem',
                                                                 mb: 0.5
                                                             }}>
                                                                 Max Supply
                                                             </Typography>
-                                                            <Typography variant={{ xs: "body2", sm: "h6" }} sx={{ 
+                                                            <Typography variant="body2" sx={{ 
                                                                 fontWeight: 600, 
                                                                 mt: 1,
-                                                                fontSize: { xs: '0.875rem', sm: '1.1rem' }
+                                                                fontSize: '0.875rem'
                                                             }}>
                                                                 {marketData.max_supply ? formatSupply(marketData.max_supply) : '∞'}
                                                             </Typography>
                                                         </Box>
-                                                    </Grid>
-                                                    <Grid item xs={6} lg={6}>
+                                                    </Box>
+                                                    <Box sx={{ flex: 1 }}>
                                                         <Box sx={{ 
                                                             textAlign: 'center', 
-                                                            p: { xs: 1.5, sm: 2 }, 
+                                                            p: 1.5, 
                                                             bgcolor: theme.palette.mode === 'light' ? 'grey.50' : 'grey.800', 
-                                                            borderRadius: 1 
+                                                            borderRadius: 1,
+                                                            height: '100%',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            justifyContent: 'center'
                                                         }}>
                                                             <Typography variant="caption" color="text.secondary" sx={{ 
                                                                 textTransform: 'uppercase', 
                                                                 letterSpacing: 1, 
                                                                 display: 'block',
-                                                                fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                                fontSize: '0.7rem',
                                                                 mb: 0.5
                                                             }}>
                                                                 Supply Ratio
                                                             </Typography>
-                                                            <Typography variant={{ xs: "body2", sm: "h6" }} sx={{ 
+                                                            <Typography variant="body2" sx={{ 
                                                                 fontWeight: 600, 
                                                                 mt: 1,
-                                                                fontSize: { xs: '0.875rem', sm: '1.1rem' }
+                                                                fontSize: '0.875rem'
                                                             }}>
                                                                 {marketData.max_supply && marketData.circulating_supply
                                                                     ? `${((marketData.circulating_supply / marketData.max_supply) * 100).toFixed(1)}%`
@@ -770,28 +790,31 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                                 }
                                                             </Typography>
                                                         </Box>
-                                                    </Grid>
-                                                </Grid>
+                                                    </Box>
+                                                </Stack>
                                             </Paper>
                                         </Grid>
 
                                         {/* Community & Development */}
-                                        <Grid item xs={12} lg={4}>
+                                        <Grid item xs={12} md={4}>
                                             <Paper elevation={0} sx={{ 
-                                                p: { xs: 2, sm: 3 }, 
+                                                p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2,
-                                                height: '100%'
+                                                height: '100%',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                minHeight: 320
                                             }}>
-                                                <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
                                                     mb: 2,
-                                                    fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                    fontSize: '1.25rem'
                                                 }}>
                                                     Community & Development
                                                 </Typography>
-                                                <Grid container spacing={{ xs: 2, sm: 3 }}>
+                                                <Grid container spacing={3} sx={{ flex: 1 }}>
                                                     <Grid item xs={12} sm={6}>
                                                         <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 2, color: 'text.secondary' }}>
                                                             Community Stats
@@ -847,22 +870,25 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* Technical Details */}
-                                        <Grid item xs={12} lg={4}>
+                                        <Grid item xs={12} md={4}>
                                             <Paper elevation={0} sx={{ 
-                                                p: { xs: 2, sm: 3 }, 
+                                                p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
-                                                height: '100%' 
+                                                height: '100%',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                minHeight: 320
                                             }}>
-                                                <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
                                                     mb: 2,
-                                                    fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                    fontSize: '1.25rem'
                                                 }}>
                                                     Technical Details
                                                 </Typography>
-                                                <Grid container spacing={{ xs: 2, md: 0 }}>
+                                                <Grid container spacing={2} sx={{ flex: 1 }}>
                                                     <Grid item xs={6} md={12}>
                                                         <Box sx={{ mb: { xs: 1, md: 2.5 } }}>
                                                             <Typography color="text.secondary" variant="body2" sx={{ 
@@ -936,31 +962,31 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
                             {/* About Tab */}
                             {activeTab === 2 && (
-                                <Box sx={{ width: '100%', maxWidth: '100%' }}>
-                                    <Typography variant={{ xs: "h6", sm: "h5" }} sx={{ 
-                                        mb: { xs: 2, sm: 3 }, 
+                                <Box sx={{ width: '100%', maxWidth: '100%', minHeight: 520 }}>
+                                    <Typography variant="h5" sx={{ 
+                                        mb: 3, 
                                         fontWeight: 600,
-                                        fontSize: { xs: '1.1rem', sm: '1.5rem' },
+                                        fontSize: '1.5rem',
                                         textAlign: { xs: 'center', sm: 'left' }
                                     }}>
                                         About {coinDetail.name}
                                     </Typography>
                                     
-                                    <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%', margin: 0 }}>
+                                    <Grid container spacing={3} sx={{ width: '100%', margin: 0 }}>
                                         {/* Description */}
                                         <Grid item xs={12} md={8}>
                                             {coinDetail.description?.en && (
                                                 <Paper elevation={0} sx={{ 
-                                                    p: { xs: 2, sm: 3 }, 
+                                                    p: 3, 
                                                     border: '1px solid', 
                                                     borderColor: 'divider', 
                                                     borderRadius: 2, 
-                                                    mb: { xs: 2, sm: 3 } 
+                                                    mb: 3
                                                 }}>
-                                                    <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                    <Typography variant="h6" gutterBottom sx={{ 
                                                         fontWeight: 600, 
                                                         mb: 2,
-                                                        fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                        fontSize: '1.25rem'
                                                     }}>
                                                         Overview
                                                     </Typography>
@@ -978,16 +1004,16 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                             {/* Categories */}
                                             {coinDetail.categories && coinDetail.categories.length > 0 && (
                                                 <Paper elevation={0} sx={{ 
-                                                    p: { xs: 2, sm: 3 }, 
+                                                    p: 3, 
                                                     border: '1px solid', 
                                                     borderColor: 'divider', 
                                                     borderRadius: 2, 
-                                                    mb: { xs: 2, sm: 3 } 
+                                                    mb: 3
                                                 }}>
-                                                    <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                    <Typography variant="h6" gutterBottom sx={{ 
                                                         fontWeight: 600, 
                                                         mb: 2,
-                                                        fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                        fontSize: '1.25rem'
                                                     }}>
                                                         Categories
                                                     </Typography>
@@ -1007,15 +1033,15 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
                                             {/* Links & Resources */}
                                             <Paper elevation={0} sx={{ 
-                                                p: { xs: 2, sm: 3 }, 
+                                                p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
-                                                borderRadius: 2 
+                                                borderRadius: 2
                                             }}>
-                                                <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
                                                     mb: 2,
-                                                    fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                    fontSize: '1.25rem'
                                                 }}>
                                                     Links & Resources
                                                 </Typography>
@@ -1100,17 +1126,16 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         {/* Platform Information */}
                                         <Grid item xs={12} md={4}>
                                             <Paper elevation={0} sx={{ 
-                                                p: { xs: 2, sm: 3 }, 
+                                                p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
-                                                height: 'fit-content',
-                                                mt: { xs: 0, md: 0 }
+                                                height: 'fit-content'
                                             }}>
-                                                <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
+                                                <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
                                                     mb: 2,
-                                                    fontSize: { xs: '1rem', sm: '1.25rem' }
+                                                    fontSize: '1.25rem'
                                                 }}>
                                                     Platform Information
                                                 </Typography>
