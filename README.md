@@ -379,17 +379,6 @@ npm run build
 - ✅ CoinGecko free tier has rate limits - wait a moment before retrying
 - ✅ Consider upgrading to a paid CoinGecko plan for higher limits
 
-## 🤝 **Contributing**
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 **License**
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## 🙏 **Acknowledgments**
 
@@ -399,5 +388,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [Vite](https://vitejs.dev/) for the amazing development experience
 
 ---
-
-**Built with ❤️ using React 19 and modern web technologies**
