@@ -103,7 +103,13 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
     return (
         <Fade in timeout={800}>
-            <Box sx={{ py: 4, px: { xs: 1, sm: 0 } }}>
+            <Box sx={{ 
+                py: 4, 
+                px: { xs: 1, sm: 0 },
+                width: '100%',
+                maxWidth: '100%',
+                overflow: 'hidden'
+            }}>
                 {/* Navigation Bar */}
                 <Grow in timeout={600}>
                     <Box sx={{ 
@@ -156,8 +162,17 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                             overflow: 'hidden'
                         }}
                     >
-                        <CardContent sx={{ p: 4 }}>
-                            <Grid container spacing={3}>
+                        <CardContent sx={{ 
+                            p: { xs: 2, sm: 3, md: 4 },
+                            width: '100%',
+                            maxWidth: '100%',
+                            overflow: 'hidden'
+                        }}>
+                            <Grid container spacing={3} sx={{ 
+                                width: '100%',
+                                maxWidth: '100%',
+                                margin: 0
+                            }}>
                                 {/* Left Side - Coin Information */}
                                 <Grid item xs={12} lg={8}>
                                     {/* Coin Header */}
@@ -468,7 +483,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                         {/* Tab Content */}
                         <Box sx={{ 
                             p: 4, 
-                            width: '100%', 
+                            width: 'fit-content', 
                             maxWidth: '100%',
                             minHeight: 600
                         }}>
@@ -484,18 +499,23 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         Market Data & Performance
                                     </Typography>
                                     
-                                    <Grid container spacing={3} sx={{ width: '100%', margin: 0 }}>
+                                    <Grid container spacing={3} sx={{ 
+                                        width: '100%', 
+                                        maxWidth: '100%',
+                                        margin: 0,
+                                        overflow: 'hidden'
+                                    }}>
                                         {/* Price Information */}
-                                        <Grid item xs={12} md={6} lg={4}>
+                                        <Grid item xs={12} md={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
-                                                height: '100%',
+                                                height: 300,
                                                 display: 'flex',
                                                 flexDirection: 'column',
-                                                minHeight: 280
+                                                width: '100%'
                                             }}>
                                                 <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
@@ -534,16 +554,16 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* All-Time Records */}
-                                        <Grid item xs={12} md={6} lg={4}>
+                                        <Grid item xs={12} md={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
-                                                height: '100%',
+                                                height: 300,
                                                 display: 'flex',
                                                 flexDirection: 'column',
-                                                minHeight: 280
+                                                width: '100%'
                                             }}>
                                                 <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
@@ -584,16 +604,16 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* Market Metrics */}
-                                        <Grid item xs={12} md={12} lg={4}>
+                                        <Grid item xs={12} md={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: 3, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
-                                                height: '100%',
+                                                height: 300,
                                                 display: 'flex',
                                                 flexDirection: 'column',
-                                                minHeight: 280
+                                                width: '100%'
                                             }}>
                                                 <Typography variant="h6" gutterBottom sx={{ 
                                                     fontWeight: 600, 
@@ -651,7 +671,12 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         Supply & Economics
                                     </Typography>
                                     
-                                    <Grid container spacing={3} sx={{ width: '100%', margin: 0 }}>
+                                    <Grid container spacing={3} sx={{ 
+                                        width: '100%', 
+                                        maxWidth: '100%',
+                                        margin: 0,
+                                        overflow: 'hidden'
+                                    }}>
                                         {/* Token Supply */}
                                         <Grid item xs={12} md={4}>
                                             <Paper elevation={0} sx={{ 
@@ -671,7 +696,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                 }}>
                                                     Token Supply
                                                 </Typography>
-                                                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ flex: 1 }}>
+                                                <Stack direction={{ xs: 'column' }} spacing={1.5} sx={{ flex: 1 }}>
                                                     <Box sx={{ flex: 1 }}>
                                                         <Box sx={{ 
                                                             textAlign: 'center', 
@@ -888,72 +913,64 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                 }}>
                                                     Technical Details
                                                 </Typography>
-                                                <Grid container spacing={2} sx={{ flex: 1 }}>
-                                                    <Grid item xs={6} md={12}>
-                                                        <Box sx={{ mb: { xs: 1, md: 2.5 } }}>
-                                                            <Typography color="text.secondary" variant="body2" sx={{ 
-                                                                mb: 0.5,
-                                                                fontSize: { xs: '0.75rem', md: '0.875rem' }
-                                                            }}>
-                                                                Genesis Date
-                                                            </Typography>
-                                                            <Typography variant="body1" sx={{ 
-                                                                fontWeight: 600,
-                                                                fontSize: { xs: '0.875rem', md: '1rem' }
-                                                            }}>
-                                                                {coinDetail.genesis_date || 'N/A'}
-                                                            </Typography>
-                                                        </Box>
-                                                    </Grid>
-                                                    <Grid item xs={6} md={12}>
-                                                        <Box sx={{ mb: { xs: 1, md: 2.5 } }}>
-                                                            <Typography color="text.secondary" variant="body2" sx={{ 
-                                                                mb: 0.5,
-                                                                fontSize: { xs: '0.75rem', md: '0.875rem' }
-                                                            }}>
-                                                                Hash Algorithm
-                                                            </Typography>
-                                                            <Typography variant="body1" sx={{ 
-                                                                fontWeight: 600,
-                                                                fontSize: { xs: '0.875rem', md: '1rem' }
-                                                            }}>
-                                                                {coinDetail.hashing_algorithm || 'N/A'}
-                                                            </Typography>
-                                                        </Box>
-                                                    </Grid>
-                                                    <Grid item xs={6} md={12}>
-                                                        <Box sx={{ mb: { xs: 1, md: 2.5 } }}>
-                                                            <Typography color="text.secondary" variant="body2" sx={{ 
-                                                                mb: 0.5,
-                                                                fontSize: { xs: '0.75rem', md: '0.875rem' }
-                                                            }}>
-                                                                Block Time
-                                                            </Typography>
-                                                            <Typography variant="body1" sx={{ 
-                                                                fontWeight: 600,
-                                                                fontSize: { xs: '0.875rem', md: '1rem' }
-                                                            }}>
-                                                                {coinDetail.block_time_in_minutes ? `${coinDetail.block_time_in_minutes} min` : 'N/A'}
-                                                            </Typography>
-                                                        </Box>
-                                                    </Grid>
-                                                    <Grid item xs={6} md={12}>
-                                                        <Box sx={{ mb: { xs: 1, md: 0 } }}>
-                                                            <Typography color="text.secondary" variant="body2" sx={{ 
-                                                                mb: 0.5,
-                                                                fontSize: { xs: '0.75rem', md: '0.875rem' }
-                                                            }}>
-                                                                Country of Origin
-                                                            </Typography>
-                                                            <Typography variant="body1" sx={{ 
-                                                                fontWeight: 600,
-                                                                fontSize: { xs: '0.875rem', md: '1rem' }
-                                                            }}>
-                                                                {coinDetail.country_origin || 'N/A'}
-                                                            </Typography>
-                                                        </Box>
-                                                    </Grid>
-                                                </Grid>
+                                                <Stack spacing={2} sx={{ flex: 1 }}>
+                                                    <Box>
+                                                        <Typography color="text.secondary" variant="body2" sx={{ 
+                                                            mb: 0.5,
+                                                            fontSize: '0.875rem'
+                                                        }}>
+                                                            Genesis Date
+                                                        </Typography>
+                                                        <Typography variant="body1" sx={{ 
+                                                            fontWeight: 600,
+                                                            fontSize: '1rem'
+                                                        }}>
+                                                            {coinDetail.genesis_date || 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box>
+                                                        <Typography color="text.secondary" variant="body2" sx={{ 
+                                                            mb: 0.5,
+                                                            fontSize: '0.875rem'
+                                                        }}>
+                                                            Hash Algorithm
+                                                        </Typography>
+                                                        <Typography variant="body1" sx={{ 
+                                                            fontWeight: 600,
+                                                            fontSize: '1rem'
+                                                        }}>
+                                                            {coinDetail.hashing_algorithm || 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box>
+                                                        <Typography color="text.secondary" variant="body2" sx={{ 
+                                                            mb: 0.5,
+                                                            fontSize: '0.875rem'
+                                                        }}>
+                                                            Block Time
+                                                        </Typography>
+                                                        <Typography variant="body1" sx={{ 
+                                                            fontWeight: 600,
+                                                            fontSize: '1rem'
+                                                        }}>
+                                                            {coinDetail.block_time_in_minutes ? `${coinDetail.block_time_in_minutes} min` : 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box>
+                                                        <Typography color="text.secondary" variant="body2" sx={{ 
+                                                            mb: 0.5,
+                                                            fontSize: '0.875rem'
+                                                        }}>
+                                                            Country of Origin
+                                                        </Typography>
+                                                        <Typography variant="body1" sx={{ 
+                                                            fontWeight: 600,
+                                                            fontSize: '1rem'
+                                                        }}>
+                                                            {coinDetail.country_origin || 'N/A'}
+                                                        </Typography>
+                                                    </Box>
+                                                </Stack>
                                             </Paper>
                                         </Grid>
                                     </Grid>
@@ -961,222 +978,191 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                             )}
 
                             {/* About Tab */}
-                            {activeTab === 2 && (
-                                <Box sx={{ width: '100%', maxWidth: '100%', minHeight: 520 }}>
-                                    <Typography variant="h5" sx={{ 
-                                        mb: 3, 
-                                        fontWeight: 600,
-                                        fontSize: '1.5rem',
-                                        textAlign: { xs: 'center', sm: 'left' }
-                                    }}>
-                                        About {coinDetail.name}
-                                    </Typography>
-                                    
-                                    <Grid container spacing={3} sx={{ width: '100%', margin: 0 }}>
-                                        {/* Description */}
-                                        <Grid item xs={12} md={8}>
-                                            {coinDetail.description?.en && (
-                                                <Paper elevation={0} sx={{ 
-                                                    p: 3, 
-                                                    border: '1px solid', 
-                                                    borderColor: 'divider', 
-                                                    borderRadius: 2, 
-                                                    mb: 3
-                                                }}>
-                                                    <Typography variant="h6" gutterBottom sx={{ 
-                                                        fontWeight: 600, 
-                                                        mb: 2,
-                                                        fontSize: '1.25rem'
-                                                    }}>
-                                                        Overview
-                                                    </Typography>
-                                                    <Typography 
-                                                        variant="body1" 
-                                                        sx={{ 
-                                                            lineHeight: 1.7,
-                                                            fontSize: { xs: '0.875rem', sm: '1rem' }
-                                                        }}
-                                                        dangerouslySetInnerHTML={{ __html: coinDetail.description.en }}
-                                                    />
-                                                </Paper>
-                                            )}
+{/* About Tab */}
+{/* About Tab */}
+{activeTab === 2 && (
+    <Box sx={{ width: '100%', maxWidth: '100%', minHeight: 480 }}>
+        <Typography variant="h5" sx={{ 
+            mb: 3, 
+            fontWeight: 600,
+            fontSize: '1.5rem',
+            textAlign: { xs: 'center', sm: 'left' }
+        }}>
+            About {coinDetail.name}
+        </Typography>
+        
+        <Box sx={{ 
+            width: 'fit-content',
+            maxWidth: { xs: '100%', md: '100%' },
+            margin: 0,
+            overflow: 'hidden'
+        }}>
+            {/* Description */}
+            {coinDetail.description?.en && (
+                <Paper elevation={0} sx={{ 
+                    p: 3, 
+                    border: '1px solid', 
+                    borderColor: 'divider', 
+                    borderRadius: 2, 
+                    mb: 3,
+                    width: 'fit-content',
+                    minWidth: '350px',
+                    maxWidth: '850px',
+                    overflow: 'hidden'
+                }}>
+                    <Typography variant="h6" gutterBottom sx={{ 
+                        fontWeight: 600, 
+                        mb: 2,
+                        fontSize: '1.25rem'
+                    }}>
+                        Overview
+                    </Typography>
+                    <Typography 
+                        variant="body1" 
+                        sx={{ 
+                            lineHeight: 1.7,
+                            fontSize: '1rem',
+                            wordWrap: 'break-word',
+                            overflowWrap: 'break-word',
+                            hyphens: 'auto',
+                            maxWidth: '100%'
+                        }}
+                        dangerouslySetInnerHTML={{ __html: coinDetail.description.en }}
+                    />
+                </Paper>
+            )}
 
-                                            {/* Categories */}
-                                            {coinDetail.categories && coinDetail.categories.length > 0 && (
-                                                <Paper elevation={0} sx={{ 
-                                                    p: 3, 
-                                                    border: '1px solid', 
-                                                    borderColor: 'divider', 
-                                                    borderRadius: 2, 
-                                                    mb: 3
-                                                }}>
-                                                    <Typography variant="h6" gutterBottom sx={{ 
-                                                        fontWeight: 600, 
-                                                        mb: 2,
-                                                        fontSize: '1.25rem'
-                                                    }}>
-                                                        Categories
-                                                    </Typography>
-                                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 0.5, sm: 1 } }}>
-                                                        {coinDetail.categories.map((category, index) => (
-                                                            <Chip 
-                                                                key={index}
-                                                                label={category}
-                                                                variant="outlined"
-                                                                size={isMobile ? "small" : "medium"}
-                                                                sx={{ fontSize: { xs: '0.7rem', sm: '0.875rem' } }}
-                                                            />
-                                                        ))}
-                                                    </Box>
-                                                </Paper>
-                                            )}
+            {/* Categories */}
+            {coinDetail.categories && coinDetail.categories.length > 0 && (
+                <Paper elevation={0} sx={{ 
+                    p: 3, 
+                    border: '1px solid', 
+                    borderColor: 'divider', 
+                    borderRadius: 2, 
+                    mb: 3,
+                    width: 'fit-content',
+                    minWidth: '350px',
+                    maxWidth: '400px',
+                    overflow: 'hidden'
+                }}>
+                    <Typography variant="h6" gutterBottom sx={{ 
+                        fontWeight: 600, 
+                        mb: 2,
+                        fontSize: '1.25rem'
+                    }}>
+                        Categories
+                    </Typography>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                        {coinDetail.categories.map((category, index) => (
+                            <Chip 
+                                key={index}
+                                label={category}
+                                variant="outlined"
+                                size={isMobile ? "small" : "medium"}
+                                sx={{ fontSize: { xs: '0.7rem', sm: '0.875rem' } }}
+                            />
+                        ))}
+                    </Box>
+                </Paper>
+            )}
 
-                                            {/* Links & Resources */}
-                                            <Paper elevation={0} sx={{ 
-                                                p: 3, 
-                                                border: '1px solid', 
-                                                borderColor: 'divider', 
-                                                borderRadius: 2
-                                            }}>
-                                                <Typography variant="h6" gutterBottom sx={{ 
-                                                    fontWeight: 600, 
-                                                    mb: 2,
-                                                    fontSize: '1.25rem'
-                                                }}>
-                                                    Links & Resources
-                                                </Typography>
-                                                <Box sx={{ 
-                                                    display: 'flex', 
-                                                    flexWrap: 'wrap', 
-                                                    gap: { xs: 0.5, sm: 1 },
-                                                    justifyContent: { xs: 'center', sm: 'flex-start' }
-                                                }}>
-                                                    {links.homepage?.[0] && (
-                                                        <Button
-                                                            variant="outlined"
-                                                            startIcon={<LanguageIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }} />}
-                                                            component={Link}
-                                                            href={links.homepage[0]}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            size={isMobile ? "small" : "medium"}
-                                                            sx={{ 
-                                                                fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                                                                px: { xs: 1, sm: 2 }
-                                                            }}
-                                                        >
-                                                            {isMobile ? "Website" : "Official Website"}
-                                                        </Button>
-                                                    )}
-                                                    {links.twitter_screen_name && (
-                                                        <Button
-                                                            variant="outlined"
-                                                            startIcon={<TwitterIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }} />}
-                                                            component={Link}
-                                                            href={`https://twitter.com/${links.twitter_screen_name}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            size={isMobile ? "small" : "medium"}
-                                                            sx={{ 
-                                                                fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                                                                px: { xs: 1, sm: 2 }
-                                                            }}
-                                                        >
-                                                            Twitter
-                                                        </Button>
-                                                    )}
-                                                    {links.repos_url?.github?.[0] && (
-                                                        <Button
-                                                            variant="outlined"
-                                                            startIcon={<GitHubIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }} />}
-                                                            component={Link}
-                                                            href={links.repos_url.github[0]}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            size={isMobile ? "small" : "medium"}
-                                                            sx={{ 
-                                                                fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                                                                px: { xs: 1, sm: 2 }
-                                                            }}
-                                                        >
-                                                            {isMobile ? "GitHub" : "GitHub Repository"}
-                                                        </Button>
-                                                    )}
-                                                    {links.blockchain_site?.[0] && (
-                                                        <Button
-                                                            variant="outlined"
-                                                            startIcon={<SecurityIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }} />}
-                                                            component={Link}
-                                                            href={links.blockchain_site[0]}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            size={isMobile ? "small" : "medium"}
-                                                            sx={{ 
-                                                                fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                                                                px: { xs: 1, sm: 2 }
-                                                            }}
-                                                        >
-                                                            {isMobile ? "Explorer" : "Blockchain Explorer"}
-                                                        </Button>
-                                                    )}
-                                                </Box>
-                                            </Paper>
-                                        </Grid>
-
-                                        {/* Platform Information */}
-                                        <Grid item xs={12} md={4}>
-                                            <Paper elevation={0} sx={{ 
-                                                p: 3, 
-                                                border: '1px solid', 
-                                                borderColor: 'divider', 
-                                                borderRadius: 2, 
-                                                height: 'fit-content'
-                                            }}>
-                                                <Typography variant="h6" gutterBottom sx={{ 
-                                                    fontWeight: 600, 
-                                                    mb: 2,
-                                                    fontSize: '1.25rem'
-                                                }}>
-                                                    Platform Information
-                                                </Typography>
-                                                {coinDetail.platforms && Object.keys(coinDetail.platforms).length > 0 ? (
-                                                    <Stack spacing={2}>
-                                                        {Object.entries(coinDetail.platforms).map(([platform, address], index) => (
-                                                            <Box key={index}>
-                                                                <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
-                                                                    {platform.charAt(0).toUpperCase() + platform.slice(1)}
-                                                                </Typography>
-                                                                <Typography variant="body2" sx={{ 
-                                                                    fontFamily: 'monospace', 
-                                                                    fontSize: '0.75rem',
-                                                                    wordBreak: 'break-all',
-                                                                    bgcolor: theme.palette.mode === 'light' ? 'grey.100' : 'grey.700',
-                                                                    p: 1,
-                                                                    borderRadius: 1
-                                                                }}>
-                                                                    {address || 'Native Blockchain'}
-                                                                </Typography>
-                                                            </Box>
-                                                        ))}
-                                                    </Stack>
-                                                ) : (
-                                                    <Box sx={{ textAlign: 'center', py: 2 }}>
-                                                        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                                                            Platform
-                                                        </Typography>
-                                                        <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                                            Native Blockchain
-                                                        </Typography>
-                                                        <Typography variant="caption" color="text.secondary">
-                                                            This cryptocurrency operates on its own blockchain
-                                                        </Typography>
-                                                    </Box>
-                                                )}
-                                            </Paper>
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                            )}
+            {/* Links & Resources */}
+            <Paper elevation={0} sx={{ 
+                p: 3, 
+                border: '1px solid', 
+                borderColor: 'divider', 
+                borderRadius: 2,
+                width: 'fit-content',
+                minWidth: '350px',
+                maxWidth: '400px',
+                overflow: 'hidden'
+            }}>
+                <Typography variant="h6" gutterBottom sx={{ 
+                    fontWeight: 600, 
+                    mb: 2,
+                    fontSize: '1.25rem'
+                }}>
+                    Links & Resources
+                </Typography>
+                <Box sx={{ 
+                    display: 'flex', 
+                    flexWrap: 'wrap', 
+                    gap: 1,
+                    justifyContent: { xs: 'center', sm: 'flex-start' }
+                }}>
+                    {links.homepage?.[0] && (
+                        <Button
+                            variant="outlined"
+                            startIcon={<LanguageIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }} />}
+                            component={Link}
+                            href={links.homepage[0]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            size={isMobile ? "small" : "medium"}
+                            sx={{ 
+                                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                px: { xs: 1, sm: 2 }
+                            }}
+                        >
+                            {isMobile ? "Website" : "Official Website"}
+                        </Button>
+                    )}
+                    {links.twitter_screen_name && (
+                        <Button
+                            variant="outlined"
+                            startIcon={<TwitterIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }} />}
+                            component={Link}
+                            href={`https://twitter.com/${links.twitter_screen_name}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            size={isMobile ? "small" : "medium"}
+                            sx={{ 
+                                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                px: { xs: 1, sm: 2 }
+                            }}
+                        >
+                            Twitter
+                        </Button>
+                    )}
+                    {links.repos_url?.github?.[0] && (
+                        <Button
+                            variant="outlined"
+                            startIcon={<GitHubIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }} />}
+                            component={Link}
+                            href={links.repos_url.github[0]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            size={isMobile ? "small" : "medium"}
+                            sx={{ 
+                                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                px: { xs: 1, sm: 2 }
+                            }}
+                        >
+                            {isMobile ? "GitHub" : "GitHub Repository"}
+                        </Button>
+                    )}
+                    {links.blockchain_site?.[0] && (
+                        <Button
+                            variant="outlined"
+                            startIcon={<SecurityIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }} />}
+                            component={Link}
+                            href={links.blockchain_site[0]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            size={isMobile ? "small" : "medium"}
+                            sx={{ 
+                                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                px: { xs: 1, sm: 2 }
+                            }}
+                        >
+                            {isMobile ? "Explorer" : "Blockchain Explorer"}
+                        </Button>
+                    )}
+                </Box>
+            </Paper>
+        </Box>
+    </Box>
+)}
                         </Box>
                     </Card>
                 </Grow>

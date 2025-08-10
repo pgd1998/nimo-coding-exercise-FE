@@ -82,7 +82,7 @@ const PriceChart = ({ coinId, coinName, currentPrice }) => {
     // Don't return early on error - show the full component with error state
 
     return (
-        <Card elevation={2} sx={{ height: 400 }}>
+        <Card elevation={2} sx={{ height: 400, maxWidth:600 }}>
             <CardContent sx={{ p: 3, height: '100%' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                     {/* Header */}
