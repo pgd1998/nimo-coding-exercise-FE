@@ -75,12 +75,26 @@ The application is fully responsive with optimized layouts for:
    npm install
    ```
 
-3. **Start development server**
+3. **Set up environment variables**
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env
+   
+   # Edit .env and add your CoinGecko API key
+   # Get a free API key from: https://www.coingecko.com/en/api/pricing
+   ```
+   
+   Add your CoinGecko API key to `.env`:
+   ```
+   VITE_API_KEY=your_coingecko_api_key_here
+   ```
+
+4. **Start development server**
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to `http://localhost:5173`
 
 ### **Available Scripts**
@@ -97,6 +111,15 @@ npm run preview
 
 # Lint code
 npm run lint
+
+# Run unit tests
+npm test
+
+# Run tests with UI interface
+npm run test:ui
+
+# Run tests with coverage report
+npm run coverage
 ```
 
 ## 🏗️ **Project Structure**
@@ -164,11 +187,20 @@ src/
 ## 🔧 **Configuration**
 
 ### **API Configuration**
-The app uses CoinGecko's public API with fallback CORS proxy handling:
+The app uses CoinGecko's API with fallback CORS proxy handling:
 
-- **Primary**: Direct CoinGecko API calls
+**Environment Variables:**
+- `VITE_API_KEY`: Your CoinGecko API key (required)
+- Get a free API key from [CoinGecko API Pricing](https://www.coingecko.com/en/api/pricing)
+
+**API Features:**
+- **Primary**: Direct CoinGecko API calls with authentication
 - **Fallback**: CORS proxy for restricted environments
+- **Rate Limiting**: Respects CoinGecko's API rate limits
+- **Error Handling**: Graceful fallback when API calls fail
 - **Caching**: Optimized request caching for better performance
+
+**Important:** Without a valid API key, the application may experience rate limiting or fail to load cryptocurrency data.
 
 ### **Theme Configuration**
 Customize the theme in `src/theme/theme.jsx`:
@@ -200,6 +232,48 @@ breakpoints: {
 - **Categories**: Project classification tags
 - **Links & Resources**: Official website, social media, GitHub links
 - **Platform Information**: Smart contract addresses and chain data
+
+## 🧪 **Testing**
+
+The application includes a comprehensive unit testing suite built with **Vitest** and **React Testing Library** to ensure code reliability and functionality.
+
+### **Test Coverage**
+- **90 total tests** covering all critical business logic
+- **Utility Functions** (25 tests): Currency formatters, number abbreviations, percentage displays
+- **Custom Hooks** (44 tests): Data fetching, state management, error handling
+- **API Service** (21 tests): Network requests, parameter handling, error scenarios
+
+### **Test Categories**
+- ✅ **Core Functionality**: Data formatting, API calls, state management
+- ✅ **Error Handling**: Network failures, invalid data, API errors
+- ✅ **Edge Cases**: Boundary conditions, empty states, invalid inputs  
+- ✅ **Async Operations**: Loading states, data fetching, concurrent requests
+- ✅ **Real-world Scenarios**: Search, pagination, chart data validation
+
+### **Running Tests**
+
+```bash
+# Run all tests once
+npm test
+
+# Run tests in watch mode (reruns on file changes)
+npm test -- --watch
+
+# Run tests with UI dashboard
+npm run test:ui
+
+# Run specific test file
+npm test -- src/utils/formatters.test.jsx
+
+# Run tests with coverage report
+npm run coverage
+```
+
+### **Testing Framework**
+- **Vitest**: Lightning-fast test runner with native Vite integration
+- **React Testing Library**: Component testing focused on user behavior
+- **jsdom**: Browser environment simulation for DOM testing
+- **Comprehensive Mocking**: API calls, browser APIs, environment variables
 
 ## 🌟 **Performance Features**
 
@@ -239,6 +313,24 @@ npm run build
 - Netlify
 - GitHub Pages
 - Firebase Hosting
+
+## 🛠️ **Troubleshooting**
+
+### **Common Issues**
+
+**"API calls failing" or "No data loading"**
+- ✅ Ensure you have created a `.env` file in the project root
+- ✅ Verify your CoinGecko API key is correctly set in `.env`
+- ✅ Get a free API key from [CoinGecko API](https://www.coingecko.com/en/api/pricing)
+- ✅ Restart the development server after adding environment variables
+
+**"Tests failing" with environment errors**
+- ✅ Tests use mock data and don't require a real API key
+- ✅ Run `npm test` - all tests should pass regardless of .env setup
+
+**"Rate limiting" errors**
+- ✅ CoinGecko free tier has rate limits - wait a moment before retrying
+- ✅ Consider upgrading to a paid CoinGecko plan for higher limits
 
 ## 🤝 **Contributing**
 
