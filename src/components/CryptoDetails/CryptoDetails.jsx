@@ -452,7 +452,9 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                             border: '1px solid', 
                             borderColor: 'divider',
                             borderRadius: 3,
-                            overflow: 'hidden'
+                            overflow: 'hidden',
+                            width: '100%',
+                            maxWidth: '100%'
                         }}
                     >
                         <Box sx={{ 
@@ -501,10 +503,10 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                         </Box>
 
                         {/* Tab Content */}
-                        <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+                        <Box sx={{ p: { xs: 2, sm: 3, md: 4 }, width: '100%', maxWidth: '100%' }}>
                             {/* Market Data Tab */}
                             {activeTab === 0 && (
-                                <Box>
+                                <Box sx={{ width: '100%', maxWidth: '100%' }}>
                                     <Typography variant={{ xs: "h6", sm: "h5" }} sx={{ 
                                         mb: { xs: 2, sm: 3 }, 
                                         fontWeight: 600,
@@ -514,7 +516,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         Market Data & Performance
                                     </Typography>
                                     
-                                    <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%' }}>
+                                    <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%', margin: 0 }}>
                                         {/* Price Information */}
                                         <Grid item xs={12} sm={4}>
                                             <Paper elevation={0} sx={{ 
@@ -523,7 +525,6 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
-                                                width: { xs: '100%', sm: 'auto' },
                                                 display: 'flex',
                                                 flexDirection: 'column'
                                             }}>
@@ -571,7 +572,6 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
-                                                width: { xs: '100%', sm: 'auto' },
                                                 display: 'flex',
                                                 flexDirection: 'column'
                                             }}>
@@ -621,7 +621,6 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
-                                                width: { xs: '100%', sm: 'auto' },
                                                 display: 'flex',
                                                 flexDirection: 'column'
                                             }}>
@@ -671,7 +670,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
                             {/* Supply & Economics Tab */}
                             {activeTab === 1 && (
-                                <Box>
+                                <Box sx={{ width: '100%', maxWidth: '100%' }}>
                                     <Typography variant={{ xs: "h6", sm: "h5" }} sx={{ 
                                         mb: { xs: 2, sm: 3 }, 
                                         fontWeight: 600,
@@ -681,7 +680,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         Supply & Economics
                                     </Typography>
                                     
-                                    <Grid container spacing={{ xs: 2, sm: 3 }}>
+                                    <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%', margin: 0 }}>
                                         {/* Token Supply */}
                                         <Grid item xs={12} sm={8}>
                                             <Paper elevation={0} sx={{ 
@@ -964,7 +963,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
                             {/* About Tab */}
                             {activeTab === 2 && (
-                                <Box>
+                                <Box sx={{ width: '100%', maxWidth: '100%' }}>
                                     <Typography variant={{ xs: "h6", sm: "h5" }} sx={{ 
                                         mb: { xs: 2, sm: 3 }, 
                                         fontWeight: 600,
@@ -974,7 +973,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         About {coinDetail.name}
                                     </Typography>
                                     
-                                    <Grid container spacing={{ xs: 2, sm: 3 }}>
+                                    <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%', margin: 0 }}>
                                         {/* Description */}
                                         <Grid item xs={12} md={8}>
                                             {coinDetail.description?.en && (
