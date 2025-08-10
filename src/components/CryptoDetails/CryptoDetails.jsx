@@ -21,12 +21,6 @@ import {
     Grow,
     Zoom,
     Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow
 } from "@mui/material";
 import PriceChart from '../PriceChart/PriceChart';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -35,12 +29,7 @@ import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import LanguageIcon from '@mui/icons-material/Language';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import ShareIcon from '@mui/icons-material/Share';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import ShowChartIcon from '@mui/icons-material/ShowChart';
 import SecurityIcon from '@mui/icons-material/Security';
-import GroupIcon from '@mui/icons-material/Group';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
@@ -978,8 +967,6 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                             )}
 
                             {/* About Tab */}
-{/* About Tab */}
-{/* About Tab */}
 {activeTab === 2 && (
     <Box sx={{ width: '100%', maxWidth: '100%', minHeight: 480 }}>
         <Typography variant="h5" sx={{ 

@@ -48,7 +48,6 @@ const usePriceChart = () => {
             // Handle proxy response format
             let data;
             if (rawData.contents) {
-                // allorigins.win format - parse the JSON string
                 data = JSON.parse(rawData.contents);
             } else {
                 // Direct response format
