@@ -300,9 +300,16 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                     </Box>
 
                                     {/* Key Metrics */}
-                                    <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mt: { xs: 1, sm: 2 } }}>
+                                    <Grid container spacing={{ xs: 3, sm: 4 }} sx={{ mt: { xs: 1, sm: 2 } }}>
                                         <Grid item xs={12} md={6}>
-                                            <Grid container spacing={{ xs: 2, sm: 3 }} direction="column">
+                                            <Box sx={{
+                                                border: '1px solid',
+                                                borderColor: 'divider',
+                                                borderRadius: 2,
+                                                p: { xs: 2, sm: 3 },
+                                                bgcolor: 'background.paper'
+                                            }}>
+                                                <Grid container spacing={{ xs: 2, sm: 3 }} direction="column">
                                                 <Grid item>
                                                     <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
                                                         <Typography variant="caption" color="text.secondary" sx={{ 
@@ -379,7 +386,8 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                         </Typography>
                                                     </Box>
                                                 </Grid>
-                                            </Grid>
+                                                </Grid>
+                                            </Box>
                                         </Grid>
                                         <Grid item xs={12} md={6}>
                                             <Box sx={{ 
@@ -395,21 +403,6 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                             </Box>
                                         </Grid>
                                     </Grid>
-                                </Grid>
-
-                                {/* Right Side - Chart */}
-                                <Grid item xs={12} lg={5}>
-                                    <Box sx={{ 
-                                        height: { xs: 350, sm: 400, md: 450, lg: '100%' }, 
-                                        minHeight: { xs: 300, sm: 350, md: 400, lg: 400 },
-                                        mt: { xs: 2, lg: 0 }
-                                    }}>
-                                        <PriceChart 
-                                            coinId={coinDetail.id}
-                                            coinName={coinDetail.name}
-                                            currentPrice={marketData.current_price?.aud}
-                                        />
-                                    </Box>
                                 </Grid>
                             </Grid>
                         </CardContent>
