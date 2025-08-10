@@ -13,8 +13,10 @@ const usePriceChart = () => {
         setIsError(null);
         
         try {
-            // Use a more reliable CORS proxy
-            const baseEndpoint = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency}&days=${days}&interval=${days <= 1 ? 'hourly' : 'daily'}`;
+            // Use CoinGecko API with automatic granularity (better for 24h data)
+            // For 24h (1 day): CoinGecko automatically uses 5-minutely data
+            // For 2-90 days: hourly data, Over 90 days: daily data
+            const baseEndpoint = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency}&days=${days}`;
             
             console.log(`Fetching chart data for ${coinId} - ${days} days`);
             

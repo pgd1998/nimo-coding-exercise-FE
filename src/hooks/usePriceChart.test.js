@@ -62,7 +62,7 @@ describe('usePriceChart', () => {
       })
       
       expect(fetch).toHaveBeenCalledWith(
-        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7&interval=daily'
+        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7'
       )
       expect(result.current.chartData).toHaveLength(3)
       expect(result.current.chartData[0]).toMatchObject({
@@ -96,10 +96,10 @@ describe('usePriceChart', () => {
       
       expect(fetch).toHaveBeenCalledTimes(2)
       expect(fetch).toHaveBeenNthCalledWith(1, 
-        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7&interval=daily'
+        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7'
       )
       expect(fetch).toHaveBeenNthCalledWith(2,
-        'https://api.allorigins.win/get?url=https%3A%2F%2Fapi.coingecko.com%2Fapi%2Fv3%2Fcoins%2Fbitcoin%2Fmarket_chart%3Fvs_currency%3Dusd%26days%3D7%26interval%3Ddaily',
+        'https://api.allorigins.win/get?url=https%3A%2F%2Fapi.coingecko.com%2Fapi%2Fv3%2Fcoins%2Fbitcoin%2Fmarket_chart%3Fvs_currency%3Dusd%26days%3D7',
         expect.objectContaining({
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
@@ -110,7 +110,7 @@ describe('usePriceChart', () => {
       expect(result.current.isError).toBe(null)
     })
 
-    it('should handle hourly interval for 1 day requests', async () => {
+    it('should use automatic granularity for 1 day requests', async () => {
       const mockResponse = {
         ok: true,
         json: () => Promise.resolve(mockChartResponse)
@@ -124,11 +124,11 @@ describe('usePriceChart', () => {
       })
       
       expect(fetch).toHaveBeenCalledWith(
-        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=hourly'
+        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1'
       )
     })
 
-    it('should handle daily interval for multi-day requests', async () => {
+    it('should use automatic granularity for multi-day requests', async () => {
       const mockResponse = {
         ok: true,
         json: () => Promise.resolve(mockChartResponse)
@@ -142,7 +142,7 @@ describe('usePriceChart', () => {
       })
       
       expect(fetch).toHaveBeenCalledWith(
-        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily'
+        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30'
       )
     })
 
@@ -160,7 +160,7 @@ describe('usePriceChart', () => {
       })
       
       expect(fetch).toHaveBeenCalledWith(
-        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=aud&days=7&interval=daily'
+        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=aud&days=7'
       )
     })
 

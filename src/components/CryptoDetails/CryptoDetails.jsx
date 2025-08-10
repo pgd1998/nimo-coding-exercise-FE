@@ -301,80 +301,97 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
 
                                     {/* Key Metrics */}
                                     <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mt: { xs: 1, sm: 2 } }}>
-                                        <Grid item xs={6} sm={6} md={3}>
-                                            <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
-                                                <Typography variant="caption" color="text.secondary" sx={{ 
-                                                    textTransform: 'uppercase', 
-                                                    letterSpacing: 1,
-                                                    fontSize: { xs: '0.65rem', sm: '0.75rem' },
-                                                    display: 'block',
-                                                    mb: 0.5
-                                                }}>
-                                                    Market Cap
-                                                </Typography>
-                                                <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
-                                                    fontWeight: 600,
-                                                    fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
-                                                }}>
-                                                    {formatMarketCap(marketData.market_cap?.aud)}
-                                                </Typography>
-                                            </Box>
+                                        <Grid item xs={12} md={6}>
+                                            <Grid container spacing={{ xs: 2, sm: 3 }} direction="column">
+                                                <Grid item>
+                                                    <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                                                        <Typography variant="caption" color="text.secondary" sx={{ 
+                                                            textTransform: 'uppercase', 
+                                                            letterSpacing: 1,
+                                                            fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                            display: 'block',
+                                                            mb: 0.5
+                                                        }}>
+                                                            Market Cap (AUD)
+                                                        </Typography>
+                                                        <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
+                                                            fontWeight: 600,
+                                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
+                                                        }}>
+                                                            {formatMarketCap(marketData.market_cap?.aud)}
+                                                        </Typography>
+                                                    </Box>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                                                        <Typography variant="caption" color="text.secondary" sx={{ 
+                                                            textTransform: 'uppercase', 
+                                                            letterSpacing: 1,
+                                                            fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                            display: 'block',
+                                                            mb: 0.5
+                                                        }}>
+                                                            24h Volume (AUD)
+                                                        </Typography>
+                                                        <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
+                                                            fontWeight: 600,
+                                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
+                                                        }}>
+                                                            {formatMarketCap(marketData.total_volume?.aud)}
+                                                        </Typography>
+                                                    </Box>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                                                        <Typography variant="caption" color="text.secondary" sx={{ 
+                                                            textTransform: 'uppercase', 
+                                                            letterSpacing: 1,
+                                                            fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                            display: 'block',
+                                                            mb: 0.5
+                                                        }}>
+                                                            Circulating Supply
+                                                        </Typography>
+                                                        <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
+                                                            fontWeight: 600,
+                                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
+                                                        }}>
+                                                            {formatSupply(marketData.circulating_supply)}
+                                                        </Typography>
+                                                    </Box>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                                                        <Typography variant="caption" color="text.secondary" sx={{ 
+                                                            textTransform: 'uppercase', 
+                                                            letterSpacing: 1,
+                                                            fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                                                            display: 'block',
+                                                            mb: 0.5
+                                                        }}>
+                                                            All-Time High
+                                                        </Typography>
+                                                        <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
+                                                            fontWeight: 600,
+                                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
+                                                        }}>
+                                                            {formatPrice(marketData.ath?.aud)}
+                                                        </Typography>
+                                                    </Box>
+                                                </Grid>
+                                            </Grid>
                                         </Grid>
-                                        <Grid item xs={6} sm={6} md={3}>
-                                            <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
-                                                <Typography variant="caption" color="text.secondary" sx={{ 
-                                                    textTransform: 'uppercase', 
-                                                    letterSpacing: 1,
-                                                    fontSize: { xs: '0.65rem', sm: '0.75rem' },
-                                                    display: 'block',
-                                                    mb: 0.5
-                                                }}>
-                                                    24h Volume
-                                                </Typography>
-                                                <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
-                                                    fontWeight: 600,
-                                                    fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
-                                                }}>
-                                                    {formatMarketCap(marketData.total_volume?.aud)}
-                                                </Typography>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item xs={6} sm={6} md={3}>
-                                            <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
-                                                <Typography variant="caption" color="text.secondary" sx={{ 
-                                                    textTransform: 'uppercase', 
-                                                    letterSpacing: 1,
-                                                    fontSize: { xs: '0.65rem', sm: '0.75rem' },
-                                                    display: 'block',
-                                                    mb: 0.5
-                                                }}>
-                                                    Circulating Supply
-                                                </Typography>
-                                                <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
-                                                    fontWeight: 600,
-                                                    fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
-                                                }}>
-                                                    {formatSupply(marketData.circulating_supply)}
-                                                </Typography>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item xs={6} sm={6} md={3}>
-                                            <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
-                                                <Typography variant="caption" color="text.secondary" sx={{ 
-                                                    textTransform: 'uppercase', 
-                                                    letterSpacing: 1,
-                                                    fontSize: { xs: '0.65rem', sm: '0.75rem' },
-                                                    display: 'block',
-                                                    mb: 0.5
-                                                }}>
-                                                    All-Time High
-                                                </Typography>
-                                                <Typography variant={{ xs: "body1", sm: "h6" }} sx={{ 
-                                                    fontWeight: 600,
-                                                    fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }
-                                                }}>
-                                                    {formatPrice(marketData.ath?.aud)}
-                                                </Typography>
+                                        <Grid item xs={12} md={6}>
+                                            <Box sx={{ 
+                                                height: { xs: 350, sm: 400, md: 450 }, 
+                                                minHeight: { xs: 300, sm: 350, md: 400 },
+                                                mt: { xs: 2, md: 0 }
+                                            }}>
+                                                <PriceChart 
+                                                    coinId={coinDetail.id}
+                                                    coinName={coinDetail.name}
+                                                    currentPrice={marketData.current_price?.aud}
+                                                />
                                             </Box>
                                         </Grid>
                                     </Grid>
@@ -488,7 +505,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                     mb: 2,
                                                     fontSize: { xs: '1rem', sm: '1.25rem' }
                                                 }}>
-                                                    Price Information
+                                                    Price Information (AUD)
                                                 </Typography>
                                                 <Stack spacing={2}>
                                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

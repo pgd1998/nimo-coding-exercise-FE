@@ -178,7 +178,7 @@ const CryptoTable = ({ searchTerm }) => {
                 <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, mb: 2 }}>
                     <Box>
                         <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
-                            Price
+                            Price (AUD)
                         </Typography>
                         <Typography variant="h6" sx={{ fontWeight: 600, color: 'primary.main' }}>
                             {formatCurrency(crypto.current_price)}
@@ -197,7 +197,7 @@ const CryptoTable = ({ searchTerm }) => {
                 <Stack direction="row" spacing={2} divider={<Box sx={{ width: 1, height: 20, bgcolor: 'divider' }} />}>
                     <Box sx={{ flex: 1, textAlign: 'center' }}>
                         <Typography variant="caption" color="text.secondary" display="block">
-                            Market Cap
+                            Market Cap (AUD)
                         </Typography>
                         <Typography variant="body2" sx={{ fontWeight: 500 }}>
                             {formatLargeNumber(crypto.market_cap)}
@@ -205,7 +205,7 @@ const CryptoTable = ({ searchTerm }) => {
                     </Box>
                     <Box sx={{ flex: 1, textAlign: 'center' }}>
                         <Typography variant="caption" color="text.secondary" display="block">
-                            Volume
+                            Volume (AUD)
                         </Typography>
                         <Typography variant="body2" sx={{ fontWeight: 500 }}>
                             {formatLargeNumber(crypto.total_volume)}
@@ -263,7 +263,7 @@ const CryptoTable = ({ searchTerm }) => {
                                 direction={getSortDirection('current_price') || 'desc'}
                                 onClick={() => handleSort('current_price')}
                             >
-                                Price
+                                Price (AUD)
                             </TableSortLabel>
                         </TableCell>
                         <TableCell align="right" sx={{ 
@@ -318,7 +318,7 @@ const CryptoTable = ({ searchTerm }) => {
                                 direction={getSortDirection('total_volume') || 'desc'}
                                 onClick={() => handleSort('total_volume')}
                             >
-                                Volume
+                                Volume (AUD)
                             </TableSortLabel>
                         </TableCell>
                         <TableCell align="right" sx={{ 
@@ -331,7 +331,7 @@ const CryptoTable = ({ searchTerm }) => {
                                 direction={getSortDirection('market_cap') || 'desc'}
                                 onClick={() => handleSort('market_cap')}
                             >
-                                Market Cap
+                                Market Cap (AUD)
                             </TableSortLabel>
                         </TableCell>
                     </TableRow>
