@@ -516,14 +516,14 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                     
                                     <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%' }}>
                                         {/* Price Information */}
-                                        <Grid item xs={12} md={4} sx={{ width: '100%' }}>
+                                        <Grid item xs={12} sm={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
-                                                width: '100%',
+                                                width: { xs: '100%', sm: 'auto' },
                                                 display: 'flex',
                                                 flexDirection: 'column'
                                             }}>
@@ -564,14 +564,14 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* All-Time Records */}
-                                        <Grid item xs={12} md={4} sx={{ width: '100%' }}>
+                                        <Grid item xs={12} sm={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
-                                                width: '100%',
+                                                width: { xs: '100%', sm: 'auto' },
                                                 display: 'flex',
                                                 flexDirection: 'column'
                                             }}>
@@ -614,14 +614,14 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* Market Metrics */}
-                                        <Grid item xs={12} md={4} sx={{ width: '100%' }}>
+                                        <Grid item xs={12} sm={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
-                                                width: '100%',
+                                                width: { xs: '100%', sm: 'auto' },
                                                 display: 'flex',
                                                 flexDirection: 'column'
                                             }}>
@@ -683,7 +683,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                     
                                     <Grid container spacing={{ xs: 2, sm: 3 }}>
                                         {/* Token Supply */}
-                                        <Grid item xs={12} md={8}>
+                                        <Grid item xs={12} sm={8}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
@@ -875,7 +875,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* Technical Details */}
-                                        <Grid item xs={12} md={4}>
+                                        <Grid item xs={12} sm={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
