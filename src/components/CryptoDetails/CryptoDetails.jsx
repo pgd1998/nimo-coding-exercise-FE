@@ -391,8 +391,8 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
                                         <Grid item xs={12} md={6}>
                                             <Box sx={{ 
-                                                height: { xs: 350, sm: 400, md: 450 }, 
-                                                minHeight: { xs: 300, sm: 350, md: 400 },
+                                                height: { xs: 400, sm: 450, md: 500 }, 
+                                                minHeight: { xs: 350, sm: 400, md: 450 },
                                                 mt: { xs: 2, md: 0 }
                                             }}>
                                                 <PriceChart 
@@ -468,7 +468,12 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                         </Box>
 
                         {/* Tab Content */}
-                        <Box sx={{ p: { xs: 2, sm: 3, md: 4 }, width: '100%', maxWidth: '100%' }}>
+                        <Box sx={{ 
+                            p: { xs: 2, sm: 3, md: 4 }, 
+                            width: '100%', 
+                            maxWidth: '100%',
+                            minHeight: { xs: 400, sm: 450, md: 500 }
+                        }}>
                             {/* Market Data Tab */}
                             {activeTab === 0 && (
                                 <Box sx={{ width: '100%', maxWidth: '100%' }}>
@@ -647,13 +652,13 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                     
                                     <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%', margin: 0 }}>
                                         {/* Token Supply */}
-                                        <Grid item xs={12} sm={8}>
+                                        <Grid item xs={12} lg={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
-                                                mb: { xs: 2, sm: 3 } 
+                                                height: '100%'
                                             }}>
                                                 <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
                                                     fontWeight: 600, 
@@ -663,7 +668,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                     Token Supply
                                                 </Typography>
                                                 <Grid container spacing={{ xs: 1.5, sm: 2 }}>
-                                                    <Grid item xs={6} sm={6} md={3}>
+                                                    <Grid item xs={6} lg={6}>
                                                         <Box sx={{ 
                                                             textAlign: 'center', 
                                                             p: { xs: 1.5, sm: 2 }, 
@@ -688,7 +693,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                             </Typography>
                                                         </Box>
                                                     </Grid>
-                                                    <Grid item xs={6} sm={6} md={3}>
+                                                    <Grid item xs={6} lg={6}>
                                                         <Box sx={{ 
                                                             textAlign: 'center', 
                                                             p: { xs: 1.5, sm: 2 }, 
@@ -713,7 +718,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                             </Typography>
                                                         </Box>
                                                     </Grid>
-                                                    <Grid item xs={6} sm={6} md={3}>
+                                                    <Grid item xs={6} lg={6}>
                                                         <Box sx={{ 
                                                             textAlign: 'center', 
                                                             p: { xs: 1.5, sm: 2 }, 
@@ -738,7 +743,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                             </Typography>
                                                         </Box>
                                                     </Grid>
-                                                    <Grid item xs={6} sm={6} md={3}>
+                                                    <Grid item xs={6} lg={6}>
                                                         <Box sx={{ 
                                                             textAlign: 'center', 
                                                             p: { xs: 1.5, sm: 2 }, 
@@ -768,13 +773,16 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                                     </Grid>
                                                 </Grid>
                                             </Paper>
+                                        </Grid>
 
-                                            {/* Community & Development */}
+                                        {/* Community & Development */}
+                                        <Grid item xs={12} lg={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
-                                                borderRadius: 2 
+                                                borderRadius: 2,
+                                                height: '100%'
                                             }}>
                                                 <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
                                                     fontWeight: 600, 
@@ -839,13 +847,13 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* Technical Details */}
-                                        <Grid item xs={12} sm={4}>
+                                        <Grid item xs={12} lg={4}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
-                                                height: 'fit-content' 
+                                                height: '100%' 
                                             }}>
                                                 <Typography variant={{ xs: "subtitle1", sm: "h6" }} gutterBottom sx={{ 
                                                     fontWeight: 600, 
