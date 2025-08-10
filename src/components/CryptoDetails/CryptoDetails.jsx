@@ -514,15 +514,16 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         Market Data & Performance
                                     </Typography>
                                     
-                                    <Grid container spacing={{ xs: 2, sm: 3 }}>
+                                    <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ width: '100%' }}>
                                         {/* Price Information */}
-                                        <Grid item xs={12} md={4}>
+                                        <Grid item xs={12} md={4} sx={{ width: '100%' }}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
+                                                width: '100%',
                                                 display: 'flex',
                                                 flexDirection: 'column'
                                             }}>
@@ -563,13 +564,14 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* All-Time Records */}
-                                        <Grid item xs={12} md={4}>
+                                        <Grid item xs={12} md={4} sx={{ width: '100%' }}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
+                                                width: '100%',
                                                 display: 'flex',
                                                 flexDirection: 'column'
                                             }}>
@@ -612,13 +614,14 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                         </Grid>
 
                                         {/* Market Metrics */}
-                                        <Grid item xs={12} md={4}>
+                                        <Grid item xs={12} md={4} sx={{ width: '100%' }}>
                                             <Paper elevation={0} sx={{ 
                                                 p: { xs: 2, sm: 3 }, 
                                                 border: '1px solid', 
                                                 borderColor: 'divider', 
                                                 borderRadius: 2, 
                                                 height: '100%',
+                                                width: '100%',
                                                 display: 'flex',
                                                 flexDirection: 'column'
                                             }}>
