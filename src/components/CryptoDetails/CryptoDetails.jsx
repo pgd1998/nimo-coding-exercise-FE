@@ -139,51 +139,6 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                                 justifyContent: { xs: 'flex-end', sm: 'flex-end' }
                             }}
                         >
-                            <Tooltip title="Add to Watchlist">
-                                <IconButton 
-                                    color="primary" 
-                                    size={isMobile ? "small" : "medium"}
-                                    sx={{ 
-                                        bgcolor: 'action.hover',
-                                        '&:hover': { bgcolor: 'primary.main', color: 'white' },
-                                        transition: 'all 0.3s ease',
-                                        width: { xs: 32, sm: 40, md: 44 },
-                                        height: { xs: 32, sm: 40, md: 44 }
-                                    }}
-                                >
-                                    <StarOutlineIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }} />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title="Share">
-                                <IconButton 
-                                    color="primary"
-                                    size={isMobile ? "small" : "medium"}
-                                    sx={{ 
-                                        bgcolor: 'action.hover',
-                                        '&:hover': { bgcolor: 'primary.main', color: 'white' },
-                                        transition: 'all 0.3s ease',
-                                        width: { xs: 32, sm: 40, md: 44 },
-                                        height: { xs: 32, sm: 40, md: 44 }
-                                    }}
-                                >
-                                    <ShareIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }} />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title="Bookmark">
-                                <IconButton 
-                                    color="primary"
-                                    size={isMobile ? "small" : "medium"}
-                                    sx={{ 
-                                        bgcolor: 'action.hover',
-                                        '&:hover': { bgcolor: 'primary.main', color: 'white' },
-                                        transition: 'all 0.3s ease',
-                                        width: { xs: 32, sm: 40, md: 44 },
-                                        height: { xs: 32, sm: 40, md: 44 }
-                                    }}
-                                >
-                                    <BookmarkBorderIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }} />
-                                </IconButton>
-                            </Tooltip>
                             <ThemeToggle size={isMobile ? "small" : "medium"} />
                         </Stack>
                     </Box>

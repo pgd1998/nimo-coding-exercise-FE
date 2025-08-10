@@ -2,6 +2,8 @@
 
 A modern, responsive React application for tracking cryptocurrency prices, market data, and detailed analytics. Built with React 19, Vite, and Material-UI with comprehensive mobile optimization.
 
+🌐 **Live Demo**: [https://crypto-nimo-fe.vercel.app/](https://crypto-nimo-fe.vercel.app/)
+
 ## ✨ Features
 
 ### 🏠 **Homepage**
@@ -298,7 +300,9 @@ npm run coverage
 
 ## 🚀 **Deployment**
 
-The application is optimized for deployment on modern hosting platforms:
+The application is **deployed live on Vercel** at: [https://crypto-nimo-fe.vercel.app/](https://crypto-nimo-fe.vercel.app/)
+
+### **Build for Production**
 
 ```bash
 # Build for production
@@ -308,11 +312,18 @@ npm run build
 # Deploy dist/ folder to your hosting platform
 ```
 
-**Recommended platforms:**
-- Vercel (optimal for React/Vite)
+### **Deployment Platforms**
+- ✅ **Vercel** (currently used - optimal for React/Vite)
 - Netlify
 - GitHub Pages
 - Firebase Hosting
+
+### **Vercel Deployment Features**
+- **Automatic Deployments**: Connected to Git repository for continuous deployment
+- **Environment Variables**: API keys configured securely in Vercel dashboard
+- **Performance Optimization**: Automatic code splitting and optimization
+- **Global CDN**: Fast loading times worldwide
+- **Custom Domain Support**: Professional domain setup available
 
 ## 🛠️ **Troubleshooting**
 
