@@ -130,16 +130,25 @@ npm run coverage
 src/
 ├── components/           # Reusable React components
 │   ├── CryptoDetails/   # Detailed cryptocurrency view
+│   │   └── CryptoDetails.jsx
 │   ├── CryptoTable/     # Main table with pagination
+│   │   └── CryptoTable.jsx
 │   ├── PriceChart/      # Interactive price charts
+│   │   └── PriceChart.jsx
 │   ├── SearchBar/       # Search functionality
+│   │   └── SearchBar.jsx
 │   ├── ThemeToggle/     # Light/dark mode toggle
+│   │   └── ThemeToggle.jsx
 │   └── LoadingSkeleton/ # Loading state components
+│       └── LoadingSkeleton.jsx
 │
 ├── hooks/               # Custom React hooks
 │   ├── useCryptoData.js    # Main data fetching hook
+│   ├── useCryptoData.test.js # Unit tests for crypto data hook
 │   ├── useCoinDetail.js    # Individual coin details
-│   └── usePriceChart.js    # Chart data management
+│   ├── useCoinDetail.test.js # Unit tests for coin detail hook
+│   ├── usePriceChart.js    # Chart data management
+│   └── usePriceChart.test.js # Unit tests for price chart hook
 │
 ├── pages/               # Page-level components
 │   ├── HomePage.jsx        # Main landing page
@@ -147,18 +156,45 @@ src/
 │   └── NotFoundPage.jsx    # 404 error page
 │
 ├── services/            # API service layer
-│   └── coinGeckoAPI.js     # CoinGecko API integration
+│   ├── coinGeckoAPI.js     # CoinGecko API integration
+│   └── coinGeckoAPI.test.js # Unit tests for API service
+│
+├── test/                # Test configuration
+│   └── setup.js            # Vitest setup configuration
 │
 ├── theme/               # Theme management
 │   ├── ThemeContext.jsx    # Theme context provider
 │   └── theme.jsx           # Material-UI theme config
 │
 ├── utils/               # Utility functions
-│   └── formatters.jsx      # Data formatting utilities
+│   ├── formatters.jsx      # Data formatting utilities
+│   └── formatters.test.jsx # Unit tests for formatters
 │
 └── assets/              # Static assets
     └── react.svg
 ```
+
+### **Test Files Structure**
+
+The application includes comprehensive unit tests located alongside their corresponding source files:
+
+```
+src/
+├── hooks/
+│   ├── useCoinDetail.test.js     # 15 tests - coin detail hook testing
+│   ├── useCryptoData.test.js     # 15 tests - crypto data hook testing
+│   └── usePriceChart.test.js     # 14 tests - price chart hook testing
+├── services/
+│   └── coinGeckoAPI.test.js      # 21 tests - API service testing
+├── test/
+│   └── setup.js                  # Test environment setup
+└── utils/
+    └── formatters.test.jsx       # 25 tests - utility functions testing
+```
+
+**Test Configuration Files:**
+- `vite.config.js` - Contains Vitest configuration with jsdom environment
+- `src/test/setup.js` - Test setup file for environment configuration
 
 ## 🎯 **Key Components**
 
