@@ -1019,51 +1019,59 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                 </Paper>
             )}
 
-            {/* Categories */}
-            {coinDetail.categories && coinDetail.categories.length > 0 && (
+            {/* Categories and Links & Resources - Side by Side */}
+            <Box sx={{ 
+                display: 'flex', 
+                flexDirection: { xs: 'column', md: 'row' }, 
+                gap: 3,
+                alignItems: 'flex-start'
+            }}>
+                {/* Categories */}
+                {coinDetail.categories && coinDetail.categories.length > 0 && (
+                    <Paper elevation={0} sx={{ 
+                        p: 3, 
+                        border: '1px solid', 
+                        borderColor: 'divider', 
+                        borderRadius: 2,
+                        width: 'fit-content',
+                        minWidth: '350px',
+                        maxWidth: '400px',
+                        overflow: 'hidden',
+                        flex: 1
+                    }}>
+                        <Typography variant="h6" gutterBottom sx={{ 
+                            fontWeight: 600, 
+                            mb: 2,
+                            fontSize: '1.25rem'
+                        }}>
+                            Categories
+                        </Typography>
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                            {coinDetail.categories.map((category, index) => (
+                                <Chip 
+                                    key={index}
+                                    label={category}
+                                    variant="outlined"
+                                    size={isMobile ? "small" : "medium"}
+                                    sx={{ fontSize: { xs: '0.7rem', sm: '0.875rem' } }}
+                                />
+                            ))}
+                        </Box>
+                    </Paper>
+                )}
+
+                {/* Links & Resources */}
                 <Paper elevation={0} sx={{ 
                     p: 3, 
                     border: '1px solid', 
                     borderColor: 'divider', 
-                    borderRadius: 2, 
-                    mb: 3,
+                    borderRadius: 2,
                     width: 'fit-content',
                     minWidth: '350px',
                     maxWidth: '400px',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    flex: 1
                 }}>
-                    <Typography variant="h6" gutterBottom sx={{ 
-                        fontWeight: 600, 
-                        mb: 2,
-                        fontSize: '1.25rem'
-                    }}>
-                        Categories
-                    </Typography>
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                        {coinDetail.categories.map((category, index) => (
-                            <Chip 
-                                key={index}
-                                label={category}
-                                variant="outlined"
-                                size={isMobile ? "small" : "medium"}
-                                sx={{ fontSize: { xs: '0.7rem', sm: '0.875rem' } }}
-                            />
-                        ))}
-                    </Box>
-                </Paper>
-            )}
-
-            {/* Links & Resources */}
-            <Paper elevation={0} sx={{ 
-                p: 3, 
-                border: '1px solid', 
-                borderColor: 'divider', 
-                borderRadius: 2,
-                width: 'fit-content',
-                minWidth: '350px',
-                maxWidth: '400px',
-                overflow: 'hidden'
-            }}>
                 <Typography variant="h6" gutterBottom sx={{ 
                     fontWeight: 600, 
                     mb: 2,
@@ -1147,6 +1155,7 @@ const CryptoDetails = ({ coinDetail, onBackClick }) => {
                     )}
                 </Box>
             </Paper>
+            </Box>
         </Box>
     </Box>
 )}
