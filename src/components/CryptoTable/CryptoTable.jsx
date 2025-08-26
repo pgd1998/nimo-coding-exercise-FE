@@ -22,6 +22,7 @@ import {
     Typography,
     Card,
     CardContent,
+    CardActionArea,
     Chip,
     Avatar,
     Stack,
@@ -29,7 +30,7 @@ import {
     useMediaQuery,
     Skeleton
 } from "@mui/material";
-
+import { usePinContext } from "../../PinContext.jsx";
 
 const CryptoTable = ({ searchTerm }) => {
     const navigate = useNavigate();
@@ -44,6 +45,8 @@ const CryptoTable = ({ searchTerm }) => {
     const [isSearching, setIsSearching] = useState(false);
     const [sortField, setSortField] = useState('market_cap');
     const [sortDirection, setSortDirection] = useState('desc');
+    const {pin, addPinCrypto} = usePinContext();
+    const [trackPin,setTrackPin] = useState([]);
 
     // Load data when not searching
     useEffect(() => {
@@ -130,6 +133,26 @@ const CryptoTable = ({ searchTerm }) => {
     if (isLoading) {
         return <LoadingSkeleton />;
     }
+
+    const handlePinCrypto = (id,name)=>{
+        // const id =crypto.id;
+        // const name = crypto.name;
+        addPinCrypto ({id,name});
+    }
+
+    const handleSetTrackPin = (id,name) =>{
+        // const id =crypto.id;
+        // const name = crypto.name;
+        setTrackPin((prev)=>[...prev, {id, name}])
+    }
+
+    const remove = (id)=>{
+        console.log("called")
+        setTrackPin(()=>trackPin.filter((prev)=>prev.id!==id));
+    }
+    // const displayPinnedCrypto = ()=>{
+
+    // }
 
     const renderMobileCard = (crypto, index) => (
         <Card 
@@ -239,6 +262,15 @@ const CryptoTable = ({ searchTerm }) => {
                             width: '8%'
                         }}>
                             #
+                        </TableCell >
+                        <TableCell
+                        sx={{ 
+                            fontWeight: 'bold', 
+                            py: 2, 
+                            width: '8%'
+                        }}
+                        >
+                        Pin
                         </TableCell>
                         <TableCell sx={{ 
                             fontWeight: 'bold', 
@@ -352,7 +384,7 @@ const CryptoTable = ({ searchTerm }) => {
                                     },
                                     transition: 'all 0.2s ease-in-out'
                                 }}
-                                onClick={() => handleCryptoClick(crypto.id)}
+                                // onClick={() => handleCryptoClick(crypto.id)}
                             >
                                 <TableCell sx={{ 
                                     py: 2,
@@ -366,6 +398,10 @@ const CryptoTable = ({ searchTerm }) => {
                                         sx={{ fontWeight: 600, minWidth: 30, fontSize: '0.75rem' }}
                                     />
                                 </TableCell>
+                                <TableCell onClick={()=>handleSetTrackPin(crypto.id,crypto.name)}>
+                                    P
+                                </TableCell>
+
                                 <TableCell component="th" scope="row" sx={{ 
                                     py: 2,
                                     width: '25%',
@@ -474,6 +510,36 @@ const CryptoTable = ({ searchTerm }) => {
 
             {/* Mobile Card View */}
             <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                <div>
+                   {trackPin &&
+                (
+                    trackPin.map((crypto,index)=> (
+                        <Card>
+                            <CardActionArea
+            
+            sx={{
+              height: '100%',
+              
+            }}
+          >
+            <CardContent sx={{ height: '100%' }}>
+                 <Typography variant="h5" component="div" onClick={() => handleCryptoClick(crypto.id)}>
+                {crypto.name}
+              </Typography>
+              <Typography onClick={()=>remove(crypto.id)}>
+                X
+              </Typography>
+            </CardContent>
+
+            {/* <div key={index} onClick={()=>handleCryptoClick(crypto.id)}>{crypto.name}</div>
+                        <button onClick={()=>remove(crypto.id)}>X</button> */}
+          </CardActionArea>
+                        
+                        </Card>
+                    ))
+                )
+                } 
+                </div>
                 {cryptoData.length > 0 ? (
                     cryptoData.map((crypto, index) => renderMobileCard(crypto, index))
                 ) : (
@@ -488,7 +554,34 @@ const CryptoTable = ({ searchTerm }) => {
             </Box>
 
             {/* Desktop Table View */}
-            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+            <Box sx={{ 
+                display: { 
+                    flexDirection:"row",
+                    xs: 'none', md: 'block' 
+                    
+                    } }}>
+                {trackPin &&
+                (
+                    trackPin.map((crypto,index)=> (
+                        <Card sx={{flexDirection:"row", width:"200px"}} >
+                            <CardActionArea>
+            <CardContent sx={{ height: '100%' }}>
+                 <Typography variant="h5" component="div" onClick={() => handleCryptoClick(crypto.id)}>
+                {crypto.name}
+              </Typography>
+              <Typography onClick={()=>remove(crypto.id)}>
+                X
+              </Typography>
+            </CardContent>
+
+            {/* <div key={index} onClick={()=>handleCryptoClick(crypto.id)}>{crypto.name}</div>
+                        <button onClick={()=>remove(crypto.id)}>X</button> */}
+          </CardActionArea>
+                        
+                        </Card>
+                    ))
+                )
+                }
                 {renderDesktopTable()}
             </Box>
 
