@@ -13,22 +13,16 @@ export const usePinContext = () => {
 
 export const PinContextProvider = ({ children }) => {
 
-    const [pin,usePinnedData] = useState([]);
+    const [pin, setPinnedData] = useState([]);
     
-    const addPinCrypto = (id,name) => {
-        console.log("called")
-        // setTrackPin(()=>trackPin.filter((prev)=>prev.id!==id));
-        // usePinnedData(()=>pin.find((prev)=>prev.id===id));
+    const addPinCrypto = ({id, name}) => {
         if (!pin.find((crypto)=>crypto.id===id)){
-            usePinnedData((prev)=>[...prev,{id,name}])
-        } else{
-            return;
+            setPinnedData((prev)=>[...prev,{id,name}])
         }
     }
 
     const remove = (id)=>{
-        console.log("called")
-        usePinnedData(()=>trackPin.filter((prev)=>prev.id!==id));
+        setPinnedData((prev)=>prev.filter((crypto)=>crypto.id!==id));
     }
     
     

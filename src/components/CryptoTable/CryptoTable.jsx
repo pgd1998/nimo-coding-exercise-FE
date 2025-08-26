@@ -45,8 +45,7 @@ const CryptoTable = ({ searchTerm }) => {
     const [isSearching, setIsSearching] = useState(false);
     const [sortField, setSortField] = useState('market_cap');
     const [sortDirection, setSortDirection] = useState('desc');
-    const {pin, addPinCrypto} = usePinContext();
-    const [trackPin,setTrackPin] = useState([]);
+    const {pin, addPinCrypto, remove} = usePinContext();
 
     // Load data when not searching
     useEffect(() => {
@@ -134,21 +133,8 @@ const CryptoTable = ({ searchTerm }) => {
         return <LoadingSkeleton />;
     }
 
-    const handlePinCrypto = (id,name)=>{
-        // const id =crypto.id;
-        // const name = crypto.name;
-        addPinCrypto ({id,name});
-    }
-
-    const handleSetTrackPin = (id,name) =>{
-        // const id =crypto.id;
-        // const name = crypto.name;
-        setTrackPin((prev)=>[...prev, {id, name}])
-    }
-
-    const remove = (id)=>{
-        console.log("called")
-        setTrackPin(()=>trackPin.filter((prev)=>prev.id!==id));
+    const handlePinCrypto = (id, name) => {
+        addPinCrypto({id, name});
     }
     // const displayPinnedCrypto = ()=>{
 
@@ -398,7 +384,7 @@ const CryptoTable = ({ searchTerm }) => {
                                         sx={{ fontWeight: 600, minWidth: 30, fontSize: '0.75rem' }}
                                     />
                                 </TableCell>
-                                <TableCell onClick={()=>handleSetTrackPin(crypto.id,crypto.name)}>
+                                <TableCell onClick={()=>handlePinCrypto(crypto.id,crypto.name)}>
                                     P
                                 </TableCell>
 
@@ -511,30 +497,20 @@ const CryptoTable = ({ searchTerm }) => {
             {/* Mobile Card View */}
             <Box sx={{ display: { xs: 'block', md: 'none' } }}>
                 <div>
-                   {trackPin &&
+                   {pin &&
                 (
-                    trackPin.map((crypto,index)=> (
-                        <Card>
-                            <CardActionArea
-            
-            sx={{
-              height: '100%',
-              
-            }}
-          >
-            <CardContent sx={{ height: '100%' }}>
-                 <Typography variant="h5" component="div" onClick={() => handleCryptoClick(crypto.id)}>
-                {crypto.name}
-              </Typography>
-              <Typography onClick={()=>remove(crypto.id)}>
-                X
-              </Typography>
-            </CardContent>
-
-            {/* <div key={index} onClick={()=>handleCryptoClick(crypto.id)}>{crypto.name}</div>
-                        <button onClick={()=>remove(crypto.id)}>X</button> */}
-          </CardActionArea>
-                        
+                    pin.map((crypto)=> (
+                        <Card key={crypto.id}>
+                            <CardActionArea sx={{ height: '100%' }}>
+                                <CardContent sx={{ height: '100%' }}>
+                                    <Typography variant="h5" component="div" onClick={() => handleCryptoClick(crypto.id)}>
+                                        {crypto.name}
+                                    </Typography>
+                                    <Typography onClick={()=>remove(crypto.id)}>
+                                        X
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
                         </Card>
                     ))
                 )
@@ -560,24 +536,20 @@ const CryptoTable = ({ searchTerm }) => {
                     xs: 'none', md: 'block' 
                     
                     } }}>
-                {trackPin &&
+                {pin &&
                 (
-                    trackPin.map((crypto,index)=> (
-                        <Card sx={{flexDirection:"row", width:"200px"}} >
+                    pin.map((crypto)=> (
+                        <Card key={crypto.id} sx={{flexDirection:"row", width:"200px"}} >
                             <CardActionArea>
-            <CardContent sx={{ height: '100%' }}>
-                 <Typography variant="h5" component="div" onClick={() => handleCryptoClick(crypto.id)}>
-                {crypto.name}
-              </Typography>
-              <Typography onClick={()=>remove(crypto.id)}>
-                X
-              </Typography>
-            </CardContent>
-
-            {/* <div key={index} onClick={()=>handleCryptoClick(crypto.id)}>{crypto.name}</div>
-                        <button onClick={()=>remove(crypto.id)}>X</button> */}
-          </CardActionArea>
-                        
+                                <CardContent sx={{ height: '100%' }}>
+                                    <Typography variant="h5" component="div" onClick={() => handleCryptoClick(crypto.id)}>
+                                        {crypto.name}
+                                    </Typography>
+                                    <Typography onClick={()=>remove(crypto.id)}>
+                                        X
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
                         </Card>
                     ))
                 )
